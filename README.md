@@ -68,6 +68,16 @@ KKJ category codes:
 | `2` | 工事 | construction / public works |
 | `3` | 役務 | services |
 
+## Count matrix
+
+Generate current KKJ search-hit totals for all six selected prefectures and three categories:
+
+```bash
+uv run python -m one_off_scripts.collect_counts
+```
+
+This makes 18 API requests and writes `one_off_scripts/counts.csv`. The CSV records the prefecture, category, total matching `search_hits`, and collection timestamp. It does not add notices to SQLite.
+
 ## Suggested first analysis dataset
 
 Start with counts by prefecture and category:
@@ -91,3 +101,22 @@ uv run python -m src.main collect --lg-code 13 --category 3 --count 1000 --datab
 Repeat for the other LG codes.
 
 Note: the KKJ API guide documents `Count` up to 1000, but does not document pagination. If `search hits` is greater than 1000, this first approach will not collect every matching notice. Later we can improve coverage by splitting requests by date range with `--cft-issue-date`.
+
+
+
+Questions I want to be answered for my analysis:
+
+
+1. I want to look at how many procurement notices per capital grouped by each prefecture name (we would have to get km squared per vol)
+## TODO: requires a reliable award/contract value data source and a precise definition of "contract price"
+2. Obviously but like I would want to know the average contract price?? for each industry
+
+3. Search hits grouped by each category across all prefectures?? and also separate by prefecture
+4. Also later, queries with keywords with system, it related software stuff
+5. Are there any organizations that are top across all categories for each prefecture? 
+6. In general, what are the top common organizations, and which category 
+7. Which category is the largest in each prefecture (use the search hits)
+8. How does procurement activity chagne over itme
+9. 
+
+### We should try to get the contract value, the population, and the area in the future. As well as any other information, and also dates that would be important. Seeing either a growth or decline of these notices over time would be cool.
