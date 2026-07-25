@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+.ruff_cache/
+
+# uv
+.python-version
+
+# SQLite databases (generated output)
+*.sqlite
+*.sqlite3
+*.db
+
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
