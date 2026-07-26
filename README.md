@@ -68,15 +68,129 @@ KKJ category codes:
 | `2` | 工事 | construction / public works |
 | `3` | 役務 | services |
 
-## Count matrix
+## One-off analysis scripts
 
-Generate current KKJ search-hit totals for all six selected prefectures and three categories:
+Run these commands from the project root. The scripts query `search_hits` for analysis; they do not insert procurement notices into `notices.sqlite`. Each run overwrites its output CSV unless a different `--output` path is supplied.
+
+### `collect_counts.py`: prefecture/category snapshot
+
+Purpose: retrieve the current total number of matching notices for every combination of the six selected prefectures and three official categories.
+
+```text
+6 prefectures × 3 categories = 18 API requests and 18 CSV rows
+```
+
+Run with the default output:
 
 ```bash
 uv run python -m one_off_scripts.collect_counts
 ```
 
-This makes 18 API requests and writes `one_off_scripts/counts.csv`. The CSV records the prefecture, category, total matching `search_hits`, and collection timestamp. It does not add notices to SQLite.
+Output:
+
+```text
+one_off_scripts/counts.csv
+```
+
+The CSV includes LG code, prefecture, category, total `search_hits`, and the UTC collection timestamp. Use it to compare category totals and category ratios by prefecture.
+
+Choose another output file:
+
+```bash
+uv run python -m one_off_scripts.collect_counts --output data/counts.csv
+```
+
+### `collect_annual_counts.py`: completed-year trends
+
+Purpose: retrieve annual notice totals by prefecture and category using the documented `CFT_Issue_Date` filter. Use this CSV for annual notice-count trends instead of the capped 1,000-record SQLite samples.
+
+The default range is the completed calendar years 2022–2025:
+
+```bash
+uv run python -m one_off_scripts.collect_annual_counts
+```
+
+Default output:
+
+```text
+one_off_scripts/annual_counts.csv
+```
+
+The default run makes:
+
+```text
+4 years × 6 prefectures × 3 categories = 72 API requests and 72 CSV rows
+```
+
+Choose another inclusive year range:
+
+```bash
+uv run python -m one_off_scripts.collect_annual_counts --start-year 2023 --end-year 2025
+```
+
+Choose another output file:
+
+```bash
+uv run python -m one_off_scripts.collect_annual_counts \
+  --start-year 2023 \
+  --end-year 2025 \
+  --output data/annual_counts.csv
+```
+
+`period_start` and `period_end` record the exact inclusive date filter. `collected_at` records when the totals were requested from KKJ. Do not compare a partial current year directly with completed calendar years.
+
+### `collect_ytd_counts.py`: current year-to-date snapshot
+
+Purpose: retrieve current-year totals from January 1 through a chosen cutoff date. Keep this analysis separate from the completed-year trend chart.
+
+Use today's date in Japan as the cutoff:
+
+```bash
+uv run python -m one_off_scripts.collect_ytd_counts
+```
+
+Default output:
+
+```text
+one_off_scripts/ytd_counts.csv
+```
+
+This makes 18 API requests and writes 18 rows. Use an explicit cutoff date to make the result reproducible:
+
+```bash
+uv run python -m one_off_scripts.collect_ytd_counts --as-of-date 2026-07-26
+```
+
+Choose another output file:
+
+```bash
+uv run python -m one_off_scripts.collect_ytd_counts \
+  --as-of-date 2026-07-26 \
+  --output data/ytd_counts_2026-07-26.csv
+```
+
+The YTD CSV includes `period_start`, `period_end`, `is_complete_year`, and `collected_at`, making it explicit that the period is not a complete calendar year.
+
+### `collect_prefecture_reference_data.py`: population and land area
+
+Purpose: download official Japanese government spreadsheets and create normalized population and area reference data for the six selected prefectures.
+
+```bash
+uv run python -m one_off_scripts.collect_prefecture_reference_data
+```
+
+Outputs:
+
+```text
+reference_data/prefecture_population.csv
+reference_data/prefecture_area.csv
+```
+
+The population CSV contains 24 rows (`2022–2025 × 6 prefectures`). The 2022–2024 values are Statistics Bureau Population Estimates published in thousands and converted to people. The 2025 values are preliminary 2025 Population Census counts published in people. The CSV preserves source units, series, status, date, and URL so this methodology difference remains visible.
+
+The area CSV contains the October 1, 2025 area in km² from the GSI area survey, as reproduced in the preliminary 2025 Population Census table. Use population to calculate notices per 100,000 residents. Use area separately to calculate notices per 1,000 km²; it is not part of a per-capita calculation.
+
+The script overwrites both reference CSVs when run.
 
 ## Suggested first analysis dataset
 

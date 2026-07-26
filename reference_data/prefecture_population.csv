@@ -1,0 +1,25 @@
+year,population_as_of_date,lg_code,prefecture_ja,prefecture_en,population,source_population_value,source_unit,source_series,value_status,source_url
+2022,2022-10-01,01,北海道,Hokkaido,5140000,5140,thousand people,Population Estimates,estimate; rounded to nearest thousand,https://www.stat.go.jp/data/jinsui/2022np/zuhyou/05k2022-2.xlsx
+2022,2022-10-01,13,東京都,Tokyo,14038000,14038,thousand people,Population Estimates,estimate; rounded to nearest thousand,https://www.stat.go.jp/data/jinsui/2022np/zuhyou/05k2022-2.xlsx
+2022,2022-10-01,14,神奈川県,Kanagawa,9232000,9232,thousand people,Population Estimates,estimate; rounded to nearest thousand,https://www.stat.go.jp/data/jinsui/2022np/zuhyou/05k2022-2.xlsx
+2022,2022-10-01,23,愛知県,Aichi,7495000,7495,thousand people,Population Estimates,estimate; rounded to nearest thousand,https://www.stat.go.jp/data/jinsui/2022np/zuhyou/05k2022-2.xlsx
+2022,2022-10-01,27,大阪府,Osaka,8782000,8782,thousand people,Population Estimates,estimate; rounded to nearest thousand,https://www.stat.go.jp/data/jinsui/2022np/zuhyou/05k2022-2.xlsx
+2022,2022-10-01,40,福岡県,Fukuoka,5116000,5116,thousand people,Population Estimates,estimate; rounded to nearest thousand,https://www.stat.go.jp/data/jinsui/2022np/zuhyou/05k2022-2.xlsx
+2023,2023-10-01,01,北海道,Hokkaido,5092000,5092,thousand people,Population Estimates,estimate; rounded to nearest thousand,https://www.stat.go.jp/data/jinsui/2023np/zuhyou/05k2023-2.xlsx
+2023,2023-10-01,13,東京都,Tokyo,14086000,14086,thousand people,Population Estimates,estimate; rounded to nearest thousand,https://www.stat.go.jp/data/jinsui/2023np/zuhyou/05k2023-2.xlsx
+2023,2023-10-01,14,神奈川県,Kanagawa,9229000,9229,thousand people,Population Estimates,estimate; rounded to nearest thousand,https://www.stat.go.jp/data/jinsui/2023np/zuhyou/05k2023-2.xlsx
+2023,2023-10-01,23,愛知県,Aichi,7477000,7477,thousand people,Population Estimates,estimate; rounded to nearest thousand,https://www.stat.go.jp/data/jinsui/2023np/zuhyou/05k2023-2.xlsx
+2023,2023-10-01,27,大阪府,Osaka,8763000,8763,thousand people,Population Estimates,estimate; rounded to nearest thousand,https://www.stat.go.jp/data/jinsui/2023np/zuhyou/05k2023-2.xlsx
+2023,2023-10-01,40,福岡県,Fukuoka,5103000,5103,thousand people,Population Estimates,estimate; rounded to nearest thousand,https://www.stat.go.jp/data/jinsui/2023np/zuhyou/05k2023-2.xlsx
+2024,2024-10-01,01,北海道,Hokkaido,5043000,5043,thousand people,Population Estimates,estimate; rounded to nearest thousand,https://www.stat.go.jp/data/jinsui/2024np/zuhyou/05k2024-2.xlsx
+2024,2024-10-01,13,東京都,Tokyo,14178000,14178,thousand people,Population Estimates,estimate; rounded to nearest thousand,https://www.stat.go.jp/data/jinsui/2024np/zuhyou/05k2024-2.xlsx
+2024,2024-10-01,14,神奈川県,Kanagawa,9225000,9225,thousand people,Population Estimates,estimate; rounded to nearest thousand,https://www.stat.go.jp/data/jinsui/2024np/zuhyou/05k2024-2.xlsx
+2024,2024-10-01,23,愛知県,Aichi,7460000,7460,thousand people,Population Estimates,estimate; rounded to nearest thousand,https://www.stat.go.jp/data/jinsui/2024np/zuhyou/05k2024-2.xlsx
+2024,2024-10-01,27,大阪府,Osaka,8757000,8757,thousand people,Population Estimates,estimate; rounded to nearest thousand,https://www.stat.go.jp/data/jinsui/2024np/zuhyou/05k2024-2.xlsx
+2024,2024-10-01,40,福岡県,Fukuoka,5092000,5092,thousand people,Population Estimates,estimate; rounded to nearest thousand,https://www.stat.go.jp/data/jinsui/2024np/zuhyou/05k2024-2.xlsx
+2025,2025-10-01,01,北海道,Hokkaido,4985419,4985419,people,2025 Population Census,preliminary count,https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040454825&fileKind=0
+2025,2025-10-01,13,東京都,Tokyo,14246219,14246219,people,2025 Population Census,preliminary count,https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040454825&fileKind=0
+2025,2025-10-01,14,神奈川県,Kanagawa,9193657,9193657,people,2025 Population Census,preliminary count,https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040454825&fileKind=0
+2025,2025-10-01,23,愛知県,Aichi,7449403,7449403,people,2025 Population Census,preliminary count,https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040454825&fileKind=0
+2025,2025-10-01,27,大阪府,Osaka,8764578,8764578,people,2025 Population Census,preliminary count,https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040454825&fileKind=0
+2025,2025-10-01,40,福岡県,Fukuoka,5081879,5081879,people,2025 Population Census,preliminary count,https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040454825&fileKind=0
