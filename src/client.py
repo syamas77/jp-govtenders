@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import logging
-from typing import Any
+from typing import Any, Self
 
 import httpx
 
@@ -22,6 +22,20 @@ class KkjClient:
     ) -> None:
         self.base_url = base_url
         self.timeout = timeout
+        self._http_client: httpx.Client | None = None
+
+    def __enter__(self) -> Self:
+        """Open a reusable HTTP connection for a multi-request collection run."""
+
+        self._http_client = httpx.Client(timeout=self.timeout)
+        return self
+
+    def __exit__(self, *args: object) -> None:
+        """Close the reusable HTTP connection."""
+
+        if self._http_client is not None:
+            self._http_client.close()
+            self._http_client = None
 
     def search(
         self,
@@ -66,9 +80,12 @@ class KkjClient:
 
         LOGGER.info("requesting KKJ API", extra={"params": params})
         try:
-            with httpx.Client(timeout=self.timeout) as client:
-                response = client.get(self.base_url, params=params)
-                response.raise_for_status()
+            if self._http_client is None:
+                with httpx.Client(timeout=self.timeout) as client:
+                    response = client.get(self.base_url, params=params)
+            else:
+                response = self._http_client.get(self.base_url, params=params)
+            response.raise_for_status()
         except httpx.HTTPError as exc:
             raise KkjHttpError(f"KKJ API request failed: {exc}") from exc
 

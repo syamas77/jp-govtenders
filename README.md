@@ -289,24 +289,89 @@ uv run python -m src.main collect --lg-code 13 --category 3 --count 1000 --datab
 
 Repeat for the other LG codes.
 
-Note: the KKJ API guide documents `Count` up to 1000, but does not document pagination. If `search hits` is greater than 1000, this first approach will not collect every matching notice. Later we can improve coverage by splitting requests by date range with `--cft-issue-date`.
+Note: the KKJ API guide documents `Count` up to 1000, but does not document pagination. If `search hits` is greater than 1000, this first approach will not collect every matching notice.
 
+## Historical service collection
 
+The restartable historical collector requests category `3` (`役務` / services) by calendar month. If a period has more than 1,000 hits, it recursively splits the inclusive date range in half until each leaf period is within the documented return cap. A one-day period above the cap is recorded as failed rather than silently treated as complete.
 
-## IT services case study: next steps
+Collect 2022–2025 for all six selected prefectures:
+
+```bash
+uv run python -m src.main collect-services-history \
+  --start-year 2022 \
+  --end-year 2025 \
+  --database service_history.sqlite
+```
+
+Collect one prefecture, or repeat `--lg-code` for a subset:
+
+```bash
+uv run python -m src.main collect-services-history \
+  --start-year 2022 \
+  --end-year 2025 \
+  --lg-code 13 \
+  --database service_history.sqlite
+```
+
+The default prefecture codes are `01`, `13`, `14`, `23`, `27`, and `40`. The collector uses a reusable HTTP connection and waits at least 0.2 seconds between requests; override this with `--request-delay` if needed.
+
+Collection state is stored in the same database in `collection_periods`. Leaf periods are marked `completed` only when the number returned equals `search_hits`; oversized parents are marked `split`, and errors are marked `failed`. Notices are deduplicated by KKJ `Key` in `notices`.
+
+Rerun the same command safely after interruption or failure. Completed leaves are skipped, split parents resume their children, and failed periods are retried. The command exits nonzero if any periods remain failed.
+
+Inspect progress:
+
+```sql
+SELECT status, COUNT(*)
+FROM collection_periods
+GROUP BY status;
+```
+
+## IT services case study: project checklist
 
 Research question:
 
 > How has public-sector IT-service procurement changed across six Japanese prefectures, which technology fields are growing, and which organizations drive that demand?
 
-1. **Implement month-partitioned service collection.** Collect category `3` notices for 2022–2025 by prefecture and month. Check `search_hits`; split periods exceeding 1,000 into weeks or days. Deduplicate by KKJ `Key` and record completed periods.
-2. **Apply taxonomy version 1.** Tag the more complete historical service dataset and perform a small drift review.
-3. **Measure IT-service activity.** Calculate IT notice counts, IT share of services, annual and year-over-year changes, subgroup growth, and prefecture differences.
-4. **Analyze issuing organizations.** Identify top IT procurers, top organizations by subgroup, and organizations contributing most to annual increases or decreases. Issuers are not necessarily contract winners.
-5. **Investigate repeated projects.** Analyze normalized-title repetition by organization and year; do not present notice counts as unique-project counts without qualification.
-6. **Run a contract-detail pilot.** Inspect 50–100 validated IT notices and official pages/attachments. Keep estimated prices, ceilings, bids, winning prices, and final contract amounts separate. Record tax status, deadline, contract period, and source.
-7. **Evaluate actionable fields.** Assess link validity, attachments, technical scope, eligibility requirements, and whether notices are current or expired.
-8. **Validate user value before a dashboard.** Produce a research report and show it to software consultancies, government contractors, cloud/security vendors, and procurement researchers before building a frontend.
+### Completed
+
+- [x] Implement the documented KKJ API client, XML parser, Pydantic models, SQLite persistence, and `count`/`collect` CLI commands.
+- [x] Build the initial `notices.sqlite` exploratory sample with 18,000 notices across six prefectures and three official categories.
+- [x] Collect complete search-hit totals by prefecture/category, completed year, and current year-to-date.
+- [x] Collect population and land-area reference data with source metadata.
+- [x] Select category `3` (`役務` / services) as the official scope for the IT-services case study.
+- [x] Define the researcher-created, multi-label IT subgroup taxonomy and core-versus-adjacent high-level logic.
+- [x] Validate the initial taxonomy with matched-title inspection and two deterministic random samples of 100 unmatched titles.
+- [x] Freeze and document `reference_data/it_service_taxonomy_v1.json`, including subgroup meanings, examples, boundaries, and limitations.
+- [x] Implement restartable monthly collection with recursive date splitting, response-count verification, KKJ-key deduplication, and persistent period status.
+- [x] Complete 2022–2025 historical service collection for all six prefectures in `service_history.sqlite`.
+- [x] Verify 288 completed monthly periods, zero failed periods, and 15,230 expected/returned/stored service notices. No month required splitting.
+
+### Next session
+
+- [ ] Create a reproducible classification script that loads taxonomy version 1, tags all 15,230 historical notices, and exports analysis-ready data.
+- [ ] Save a collection-completeness audit by year and prefecture from `collection_periods` and compare it with `annual_counts.csv`.
+- [ ] Validate taxonomy drift on the historical dataset with a deterministic unmatched sample and a matched sample stratified across subgroups, years, and prefectures.
+- [ ] If clear new terminology is found, create a new taxonomy version rather than silently changing version 1.
+- [ ] Freeze the validated historical classification before interpreting trends.
+
+### Core analysis
+
+- [ ] Calculate annual IT notice counts, IT share of all services, and year-over-year changes.
+- [ ] Analyze subgroup counts, shares, overlaps, and growth by year.
+- [ ] Compare prefectures using counts, IT share of services, and notices per 100,000 residents.
+- [ ] Identify top issuing organizations overall and by subgroup, plus organizations contributing most to annual increases or decreases.
+- [ ] Investigate normalized-title repetition by organization and year; do not present notice counts as unique projects without qualification.
+- [ ] Keep incomplete 2026 year-to-date results separate from completed 2022–2025 calendar years.
+
+### Case report and later validation
+
+- [ ] Write the case-study methodology, completeness audit, taxonomy validation, results, and limitations.
+- [ ] Run a 50–100 notice contract-detail pilot using official pages and attachments.
+- [ ] Keep estimated prices, ceilings, bids, winning prices, and final contract amounts separate; record tax status and source evidence.
+- [ ] Assess link validity, attachment availability, technical scope, eligibility requirements, deadlines, and contract periods.
+- [ ] Validate the report's usefulness with software consultancies, government contractors, cloud/security vendors, and procurement researchers before considering a dashboard.
 
 Current limitations:
 

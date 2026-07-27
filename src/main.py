@@ -7,6 +7,7 @@ import logging
 from pathlib import Path
 
 from src.collector import CollectionResult, collect_once
+from src.partitioned_collector import DEFAULT_LG_CODES, collect_service_history
 
 CATEGORY_HELP = (
     "Documented KKJ Category: 1=物品/goods, 2=工事/construction, 3=役務/services."
@@ -50,6 +51,34 @@ def main() -> None:
     )
     _add_search_arguments(count_parser)
 
+    history_parser = subparsers.add_parser(
+        "collect-services-history",
+        help="Collect restartable, date-partitioned historical service notices.",
+    )
+    history_parser.add_argument(
+        "--database",
+        type=Path,
+        required=True,
+        help="SQLite database file to create/use.",
+    )
+    history_parser.add_argument("--start-year", type=int, default=2022)
+    history_parser.add_argument("--end-year", type=int, default=2025)
+    history_parser.add_argument(
+        "--lg-code",
+        dest="lg_codes",
+        action="append",
+        help=(
+            "Prefecture code to collect. Repeat for multiple codes. "
+            f"Defaults to {', '.join(DEFAULT_LG_CODES)}."
+        ),
+    )
+    history_parser.add_argument(
+        "--request-delay",
+        type=float,
+        default=0.2,
+        help="Minimum seconds between API requests. Default: 0.2.",
+    )
+
     args = parser.parse_args()
     logging.basicConfig(
         level=logging.INFO, format="%(levelname)s %(name)s: %(message)s"
@@ -83,6 +112,32 @@ def main() -> None:
         )
         print(f"search hits: {result.response.search_hits}")
         print("database: not saved")
+        return
+
+    if args.command == "collect-services-history":
+        if args.end_year < args.start_year:
+            history_parser.error("--end-year must be on or after --start-year")
+        if args.request_delay < 0:
+            history_parser.error("--request-delay must be non-negative")
+        lg_codes = tuple(args.lg_codes) if args.lg_codes else DEFAULT_LG_CODES
+        summary = collect_service_history(
+            database_path=args.database,
+            start_year=args.start_year,
+            end_year=args.end_year,
+            lg_codes=lg_codes,
+            request_delay=args.request_delay,
+        )
+        print(f"API requests: {summary.requests}")
+        print(f"periods completed: {summary.completed_periods}")
+        print(f"periods skipped: {summary.skipped_periods}")
+        print(f"periods split: {summary.split_periods}")
+        print(f"periods failed: {summary.failed_periods}")
+        print(f"notices expected: {summary.expected_notices}")
+        print(f"notices returned: {summary.returned_notices}")
+        print(f"new notices inserted: {summary.inserted_notices}")
+        print(f"database: {args.database}")
+        if summary.failed_periods:
+            raise SystemExit(1)
         return
 
     parser.print_help()

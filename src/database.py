@@ -8,7 +8,7 @@ from pathlib import Path
 
 from src.models import ProcurementNotice
 
-SCHEMA = """
+NOTICE_SCHEMA = """
 CREATE TABLE IF NOT EXISTS notices (
     key TEXT PRIMARY KEY,
     project_name TEXT,
@@ -23,12 +23,30 @@ CREATE TABLE IF NOT EXISTS notices (
 );
 """
 
+COLLECTION_PERIOD_SCHEMA = """
+CREATE TABLE IF NOT EXISTS collection_periods (
+    lg_code TEXT NOT NULL,
+    category INTEGER NOT NULL,
+    period_start TEXT NOT NULL,
+    period_end TEXT NOT NULL,
+    status TEXT NOT NULL,
+    search_hits INTEGER,
+    returned_count INTEGER,
+    inserted_count INTEGER,
+    error TEXT,
+    attempted_at TEXT NOT NULL,
+    completed_at TEXT,
+    PRIMARY KEY (lg_code, category, period_start, period_end)
+);
+"""
+
 
 def connect(path: str | Path) -> sqlite3.Connection:
     """Open a SQLite database and ensure the simple schema exists."""
 
     connection = sqlite3.connect(path)
-    connection.execute(SCHEMA)
+    connection.execute(NOTICE_SCHEMA)
+    connection.execute(COLLECTION_PERIOD_SCHEMA)
     connection.commit()
     return connection
 
