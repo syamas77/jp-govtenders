@@ -1,0 +1,74 @@
+{
+  "taxonomy_name": "IT-related services title taxonomy",
+  "version": "1.0.0",
+  "created_date": "2026-07-27",
+  "status": "researcher-defined exploratory taxonomy",
+  "official_kkj_category_filter": {
+    "code": 3,
+    "value": "役務",
+    "english": "services"
+  },
+  "source_field": "ProjectName / project_name",
+  "matching": {
+    "case_sensitive": false,
+    "missing_values_match": false,
+    "multi_label": true
+  },
+  "patterns": {
+    "system_development": "(?:システム|情報システム).*(?:開発|構築|改修|更新|導入)|(?:開発|構築|改修|更新|導入).*(?:システム|情報システム)",
+    "system_services": "(?:システム|情報システム).*(?:提供|利用支援)",
+    "software_applications": "ソフトウェア|アプリケーション|ウェブアプリ|Webアプリ|(?:Web|ウェブ)会議.*ライセンス|(?:ソフトウェア|アプリケーション).*ライセンス",
+    "operations_maintenance": "(?:システム|情報システム).*(?:運用|保守)|(?:運用|保守).*(?:システム|情報システム)",
+    "cloud": "クラウド|SaaS|IaaS|PaaS",
+    "cybersecurity": "サイバーセキュリティ|情報セキュリティ|セキュリティ対策|脆弱性診断|ペネトレーションテスト|ゼロトラスト",
+    "network_infrastructure": "ネットワーク|サーバー?|データセンター",
+    "end_user_computing": "PCキッティング|パソコン.*キッティング|端末.*(?:キッティング|セットアップ)",
+    "data_digital": "データ(?:分析|基盤|連携|移行)|デジタル化|データ化|(?<![A-Za-z])DX(?![A-Za-z])",
+    "artificial_intelligence": "人工知能|生成AI|生成ＡＩ|(?<![A-Za-z])AI(?![A-Za-z])|ＡＩ|機械学習|深層学習|大規模言語モデル|(?<![A-Za-z])LLM(?![A-Za-z])|ChatGPT|(?<![A-Za-z])RAG(?![A-Za-z])"
+  },
+  "core_it_delivery_subgroups": [
+    "system_development",
+    "system_services",
+    "software_applications",
+    "operations_maintenance",
+    "cloud",
+    "cybersecurity",
+    "network_infrastructure",
+    "end_user_computing"
+  ],
+  "adjacent_subgroups": [
+    "data_digital",
+    "artificial_intelligence"
+  ],
+  "high_level_logic": {
+    "it_related": "matches any pattern",
+    "core_it_delivery": "matches any core_it_delivery_subgroups pattern",
+    "digital_or_ai_adjacent": "matches data_digital or artificial_intelligence and does not match core_it_delivery"
+  },
+  "validation": {
+    "matched_titles": "manually inspected subgroup samples",
+    "unmatched_review_round_1": {
+      "sample_size": 100,
+      "clear_missed_it": 4,
+      "uncertain": 6
+    },
+    "unmatched_review_round_2": {
+      "sample_size": 100,
+      "clear_missed_it": 0,
+      "uncertain": 11
+    }
+  },
+  "known_exclusions_or_boundaries": [
+    "digital training without technical delivery",
+    "BPR or digital consulting without explicit technical delivery",
+    "physical telecommunications and CCTV maintenance",
+    "embedded systems where software work is not explicit",
+    "generic or unusable project titles"
+  ],
+  "limitations": [
+    "not an official KKJ classification",
+    "title-only matching can produce false positives and false negatives",
+    "counts represent notices, not necessarily unique underlying projects",
+    "subgroups overlap"
+  ]
+}

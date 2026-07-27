@@ -1,0 +1,177 @@
+{
+  "taxonomy_name": "IT-related services title taxonomy",
+  "version": "1.0.0",
+  "created_date": "2026-07-27",
+  "status": "researcher-defined exploratory taxonomy",
+  "official_kkj_category_filter": {
+    "code": 3,
+    "value": "役務",
+    "english": "services"
+  },
+  "source_field": "ProjectName / project_name",
+  "matching": {
+    "case_sensitive": false,
+    "missing_values_match": false,
+    "multi_label": true
+  },
+  "patterns": {
+    "system_development": "(?:システム|情報システム).*(?:開発|構築|改修|更新|導入)|(?:開発|構築|改修|更新|導入).*(?:システム|情報システム)",
+    "system_services": "(?:システム|情報システム).*(?:提供|利用支援)",
+    "software_applications": "ソフトウェア|アプリケーション|ウェブアプリ|Webアプリ|(?:Web|ウェブ)会議.*ライセンス|(?:ソフトウェア|アプリケーション).*ライセンス",
+    "operations_maintenance": "(?:システム|情報システム).*(?:運用|保守)|(?:運用|保守).*(?:システム|情報システム)",
+    "cloud": "クラウド|SaaS|IaaS|PaaS",
+    "cybersecurity": "サイバーセキュリティ|情報セキュリティ|セキュリティ対策|脆弱性診断|ペネトレーションテスト|ゼロトラスト",
+    "network_infrastructure": "ネットワーク|サーバー?|データセンター",
+    "end_user_computing": "PCキッティング|パソコン.*キッティング|端末.*(?:キッティング|セットアップ)",
+    "data_digital": "データ(?:分析|基盤|連携|移行)|デジタル化|データ化|(?<![A-Za-z])DX(?![A-Za-z])",
+    "artificial_intelligence": "人工知能|生成AI|生成ＡＩ|(?<![A-Za-z])AI(?![A-Za-z])|ＡＩ|機械学習|深層学習|大規模言語モデル|(?<![A-Za-z])LLM(?![A-Za-z])|ChatGPT|(?<![A-Za-z])RAG(?![A-Za-z])"
+  },
+  "subgroup_definitions": {
+    "system_development": {
+      "level": "core_it_delivery",
+      "meaning": "Design, development, construction, implementation, modification, replacement, or renewal of an information system.",
+      "examples": [
+        "システム開発",
+        "情報システム構築",
+        "システム改修",
+        "システム更新"
+      ],
+      "boundary": "A title containing the generic word システム is not enough unless it also indicates a development or implementation action."
+    },
+    "system_services": {
+      "level": "core_it_delivery",
+      "meaning": "Provision of, or usage support for, an information system when the title does not explicitly describe development or operations.",
+      "examples": [
+        "検索システム提供役務",
+        "情報システム利用支援"
+      ],
+      "boundary": "Physical or non-information systems are outside the intended scope."
+    },
+    "software_applications": {
+      "level": "core_it_delivery",
+      "meaning": "Procurement, provision, licensing, development, or support of software and applications.",
+      "examples": [
+        "ソフトウェア保守",
+        "アプリケーション改修",
+        "Web会議用ライセンス"
+      ],
+      "boundary": "Generic licenses without a clear software or application context are not matched."
+    },
+    "operations_maintenance": {
+      "level": "core_it_delivery",
+      "meaning": "Ongoing operation, administration, support, or maintenance of an information system.",
+      "examples": [
+        "システム運用",
+        "情報システム保守",
+        "運用保守業務"
+      ],
+      "boundary": "Maintenance of scientific, mechanical, camera, or other physical equipment may be outside scope unless an information system is explicit."
+    },
+    "cloud": {
+      "level": "core_it_delivery",
+      "meaning": "Cloud platforms, hosted infrastructure, cloud migration, SaaS, IaaS, PaaS, or related cloud support.",
+      "examples": [
+        "クラウドサービス",
+        "AWSクラウド環境",
+        "SaaS環境構築"
+      ],
+      "boundary": "The title must explicitly indicate cloud technology or a named cloud-service model."
+    },
+    "cybersecurity": {
+      "level": "core_it_delivery",
+      "meaning": "Information and cybersecurity services, including audits, advisory work, vulnerability testing, security controls, and zero-trust work.",
+      "examples": [
+        "情報セキュリティ監査",
+        "脆弱性診断",
+        "セキュリティ対策支援"
+      ],
+      "boundary": "Physical guarding and general security services are not cybersecurity."
+    },
+    "network_infrastructure": {
+      "level": "core_it_delivery",
+      "meaning": "Computer networks, servers, data-center infrastructure, network configuration, and related technical support.",
+      "examples": [
+        "ネットワーク構築",
+        "サーバ運用",
+        "データセンター"
+      ],
+      "boundary": "Physical telecommunications towers, public-address radio, CCTV, and data-center industry promotion may be adjacent or out of scope."
+    },
+    "end_user_computing": {
+      "level": "core_it_delivery",
+      "meaning": "Setup, configuration, deployment, or preparation of personal computers and end-user devices.",
+      "examples": [
+        "PCキッティング",
+        "端末セットアップ"
+      ],
+      "boundary": "General equipment maintenance and office-machine maintenance are not automatically included."
+    },
+    "data_digital": {
+      "level": "digital_or_ai_adjacent_unless_core",
+      "meaning": "Data platforms, data integration, data migration, digitization, and broader digital-transformation or DX work.",
+      "examples": [
+        "データ基盤",
+        "データ連携",
+        "データ化",
+        "DX推進"
+      ],
+      "boundary": "Training, policy support, consulting, video production, and industry-promotion work may be digitally adjacent rather than technical IT delivery."
+    },
+    "artificial_intelligence": {
+      "level": "digital_or_ai_adjacent_unless_core",
+      "meaning": "Artificial intelligence, machine learning, generative AI, large language models, RAG, and related AI services or studies.",
+      "examples": [
+        "生成AI",
+        "機械学習",
+        "LLM",
+        "RAG検索システム"
+      ],
+      "boundary": "AI surveys, education, exhibitions, literacy programs, and policy studies may be AI-adjacent rather than technical AI delivery."
+    }
+  },
+  "core_it_delivery_subgroups": [
+    "system_development",
+    "system_services",
+    "software_applications",
+    "operations_maintenance",
+    "cloud",
+    "cybersecurity",
+    "network_infrastructure",
+    "end_user_computing"
+  ],
+  "adjacent_subgroups": [
+    "data_digital",
+    "artificial_intelligence"
+  ],
+  "high_level_logic": {
+    "it_related": "matches any pattern",
+    "core_it_delivery": "matches any core_it_delivery_subgroups pattern",
+    "digital_or_ai_adjacent": "matches data_digital or artificial_intelligence and does not match core_it_delivery"
+  },
+  "validation": {
+    "matched_titles": "manually inspected subgroup samples",
+    "unmatched_review_round_1": {
+      "sample_size": 100,
+      "clear_missed_it": 4,
+      "uncertain": 6
+    },
+    "unmatched_review_round_2": {
+      "sample_size": 100,
+      "clear_missed_it": 0,
+      "uncertain": 11
+    }
+  },
+  "known_exclusions_or_boundaries": [
+    "digital training without technical delivery",
+    "BPR or digital consulting without explicit technical delivery",
+    "physical telecommunications and CCTV maintenance",
+    "embedded systems where software work is not explicit",
+    "generic or unusable project titles"
+  ],
+  "limitations": [
+    "not an official KKJ classification",
+    "title-only matching can produce false positives and false negatives",
+    "counts represent notices, not necessarily unique underlying projects",
+    "subgroups overlap"
+  ]
+}

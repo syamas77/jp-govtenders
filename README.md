@@ -173,7 +173,7 @@ The YTD CSV includes `period_start`, `period_end`, `is_complete_year`, and `coll
 
 ### `collect_prefecture_reference_data.py`: population and land area
 
-Purpose: download official Japanese government spreadsheets and create normalized population and area reference data for the six selected prefectures.
+Purpose: download official Japanese government spreadsheets and create normalized reference data for the six selected prefectures.
 
 ```bash
 uv run python -m one_off_scripts.collect_prefecture_reference_data
@@ -186,11 +186,86 @@ reference_data/prefecture_population.csv
 reference_data/prefecture_area.csv
 ```
 
-The population CSV contains 24 rows (`2022–2025 × 6 prefectures`). The 2022–2024 values are Statistics Bureau Population Estimates published in thousands and converted to people. The 2025 values are preliminary 2025 Population Census counts published in people. The CSV preserves source units, series, status, date, and URL so this methodology difference remains visible.
+The population file contains 2022–2025 values. The 2022–2024 values are Statistics Bureau estimates converted from thousands to people; 2025 values are preliminary Population Census counts. The area file contains October 1, 2025 GSI area values in km². Source units, dates, status, and URLs are preserved.
 
-The area CSV contains the October 1, 2025 area in km² from the GSI area survey, as reproduced in the preliminary 2025 Population Census table. Use population to calculate notices per 100,000 residents. Use area separately to calculate notices per 1,000 km²; it is not part of a per-capita calculation.
+## IT services taxonomy
 
-The script overwrites both reference CSVs when run.
+`reference_data/it_service_taxonomy_v1.json` is version `1.0.0` of the researcher-defined title taxonomy for IT-related notices within KKJ category `3` (`役務` / services). It is not an official KKJ classification.
+
+Load it in a notebook:
+
+```python
+import json
+from pathlib import Path
+
+taxonomy = json.loads(
+    Path("reference_data/it_service_taxonomy_v1.json").read_text()
+)
+
+it_patterns = taxonomy["patterns"]
+core_it_columns = taxonomy["core_it_delivery_subgroups"]
+subgroup_definitions = taxonomy["subgroup_definitions"]
+```
+
+The JSON documents each subgroup's meaning, examples, and boundaries. Detailed subgroups can overlap. At the exclusive high level, core technical delivery takes priority; `digital_or_ai_adjacent` contains data/digital or AI matches that do not match a core subgroup.
+
+### Validation sample and review process
+
+Validation used the 6,000 sampled service notices in SQLite (`1,000 notices × 6 prefectures`). Because those API responses are capped and their ordering is undocumented, this sample was used to develop the taxonomy—not to estimate the complete IT-services market.
+
+1. Apply the initial regular expressions to `project_name`.
+2. Set `it_related=True` when any subgroup matches.
+3. Manually inspect samples from every matched subgroup for obvious false positives and boundary cases.
+4. Randomly sample 100 unmatched titles with `random_state=42` to look for false negatives.
+5. Record `review_decision`, `suggested_it_tag`, and `review_notes` for each title.
+6. Update patterns only for clear misses, then inspect all newly matched notices.
+7. Randomly sample another 100 unmatched titles with `random_state=43`.
+8. Freeze version 1 when the second review finds no clear new core-IT keyword family.
+
+Review decision meanings:
+
+| Decision | Meaning |
+| --- | --- |
+| `IT` | clear false negative that should inform a taxonomy update |
+| `not_IT` | correctly excluded based on the project title |
+| `uncertain` | title is insufficient or work sits near the chosen IT/software boundary |
+
+Round one:
+
+```text
+90 not IT
+4 clear missed IT notices
+6 uncertain or boundary cases
+```
+
+The four clear misses added conservative support for system provision, software-context licenses, `データ化`, RAG, and PC/device kitting. The updated taxonomy matched 333 of the 6,000 sampled service notices, compared with 322 before the update.
+
+Round two:
+
+```text
+89 not IT
+0 clear missed core IT notices
+11 uncertain, boundary, or insufficient-title cases
+```
+
+Review artifacts:
+
+```text
+analysis_outputs/unmatched_service_titles_review.csv
+analysis_outputs/unmatched_service_titles_reviewed.csv
+analysis_outputs/newly_matched_after_taxonomy_update.csv
+analysis_outputs/unmatched_service_titles_review_round2.csv
+analysis_outputs/unmatched_service_titles_review_round2_reviewed.csv
+```
+
+Limitations:
+
+- Most review decisions use titles rather than full linked documents.
+- Two samples of 100 do not prove perfect precision or recall.
+- Generic titles and filenames require source-document inspection.
+- Counts describe notices, not necessarily unique underlying projects.
+- Reissued or corrected notices can have different KKJ keys.
+- Revalidate for taxonomy drift after collecting the larger historical dataset.
 
 ## Suggested first analysis dataset
 
@@ -218,19 +293,24 @@ Note: the KKJ API guide documents `Count` up to 1000, but does not document pagi
 
 
 
-Questions I want to be answered for my analysis:
+## IT services case study: next steps
 
+Research question:
 
-1. I want to look at how many procurement notices per capital grouped by each prefecture name (we would have to get km squared per vol)
-## TODO: requires a reliable award/contract value data source and a precise definition of "contract price"
-2. Obviously but like I would want to know the average contract price?? for each industry
+> How has public-sector IT-service procurement changed across six Japanese prefectures, which technology fields are growing, and which organizations drive that demand?
 
-3. Search hits grouped by each category across all prefectures?? and also separate by prefecture
-4. Also later, queries with keywords with system, it related software stuff
-5. Are there any organizations that are top across all categories for each prefecture? 
-6. In general, what are the top common organizations, and which category 
-7. Which category is the largest in each prefecture (use the search hits)
-8. How does procurement activity chagne over itme
-9. 
+1. **Implement month-partitioned service collection.** Collect category `3` notices for 2022–2025 by prefecture and month. Check `search_hits`; split periods exceeding 1,000 into weeks or days. Deduplicate by KKJ `Key` and record completed periods.
+2. **Apply taxonomy version 1.** Tag the more complete historical service dataset and perform a small drift review.
+3. **Measure IT-service activity.** Calculate IT notice counts, IT share of services, annual and year-over-year changes, subgroup growth, and prefecture differences.
+4. **Analyze issuing organizations.** Identify top IT procurers, top organizations by subgroup, and organizations contributing most to annual increases or decreases. Issuers are not necessarily contract winners.
+5. **Investigate repeated projects.** Analyze normalized-title repetition by organization and year; do not present notice counts as unique-project counts without qualification.
+6. **Run a contract-detail pilot.** Inspect 50–100 validated IT notices and official pages/attachments. Keep estimated prices, ceilings, bids, winning prices, and final contract amounts separate. Record tax status, deadline, contract period, and source.
+7. **Evaluate actionable fields.** Assess link validity, attachments, technical scope, eligibility requirements, and whether notices are current or expired.
+8. **Validate user value before a dashboard.** Produce a research report and show it to software consultancies, government contractors, cloud/security vendors, and procurement researchers before building a frontend.
 
-### We should try to get the contract value, the population, and the area in the future. As well as any other information, and also dates that would be important. Seeing either a growth or decline of these notices over time would be cool.
+Current limitations:
+
+- The KKJ API documents a maximum return count of 1,000 and no pagination.
+- `CftIssueDate` may be the announcement date or KKJ acquisition date when the announcement date is unavailable.
+- Notice counts do not measure spending or contract value.
+- Price analysis remains a TODO until amount types and extraction reliability are validated.
