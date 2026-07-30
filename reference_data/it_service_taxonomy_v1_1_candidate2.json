@@ -1,0 +1,259 @@
+{
+  "taxonomy_name": "IT-related services title taxonomy",
+  "version": "1.1.0-candidate2",
+  "created_date": "2026-07-30",
+  "status": "researcher-defined candidate 2 pending changed-row and final independent holdout validation",
+  "official_kkj_category_filter": {
+    "code": 3,
+    "value": "役務",
+    "english": "services"
+  },
+  "source_field": "ProjectName / project_name",
+  "matching": {
+    "case_sensitive": false,
+    "missing_values_match": false,
+    "multi_label": true,
+    "subgroup_specific_exclusions": true
+  },
+  "patterns": {
+    "system_development": "(?:システム|情報システム).*(?:開発|構築|改修|改良|更新|導入)|(?:開発|構築|改修|改良|更新).*(?:システム|情報システム)|(?:AI|ＡＩ|人工知能|LLM|ＬＬＭ|大規模言語モデル).*(?:構築|開発|改修|拡張|高精度化|ROS化)|(?:データ(?:連携)?解析基盤|データ基盤|解析基盤).*(?:構築|開発|改修|拡張)",
+    "system_services": "(?:システム|情報システム).*(?:提供|利用支援)|システムの利用(?:及び|、|$)",
+    "software_applications": "ソフトウェア|アプリケーション|ウェブアプリ|Webアプリ|(?:Web|ウェブ)会議.*ライセンス|(?:ソフトウェア|アプリケーション).*ライセンス|(?:ホームページ|ウェブサイト|Webサイト).*(?:構築|制作|作成|改修|更新|リニューアル)|(?:構築|制作|作成|改修|更新|リニューアル).*(?:ホームページ|ウェブサイト|Webサイト)|(?:AI|ＡＩ).*(?:チャットボット|OCR|ユーザインタフェース|API).*(?:構築|提供|拡張|開発|ROS化)|(?:ホームページ|ウェブサイト|Webサイト).*(?:運用|維持管理|移行|トランジション)",
+    "operations_maintenance": "(?:システム|情報システム).*(?:運用|保守)|(?:運用|保守).*(?:システム|情報システム)|(?:AI|ＡＩ).*(?:基盤|プラットフォーム).*(?:維持管理|運用|保守)|(?:システム|情報システム).*(?:故障診断|ヘルプデスク)|(?:AI|ＡＩ).*維持管理検証基盤.*(?:構成支援|RMF|ＲＭＦ)",
+    "cloud": "クラウド|SaaS|IaaS|PaaS",
+    "cybersecurity": "サイバーセキュリティ|情報セキュリティ|セキュリティ対策|脆弱性診断|ペネトレーションテスト|ゼロトラスト|(?:RMF|ＲＭＦ).*システム構成",
+    "network_infrastructure": "ネットワーク|サーバー?|データセンター|(?:電子計算機システム|情報システム|システム).*(?:移設|データ移行)|(?:ＩＰ|IP)無線|音声(?:ＩＰ|IP)化|VoIP",
+    "end_user_computing": "PCキッティング|パソコン.*キッティング|端末.*(?:キッティング|セットアップ)|レセプトコンピューター.*(?:借上|賃貸借|導入)",
+    "data_digital": "データ(?:分析|基盤|連携|移行)|デジタル化|データ化|(?<![A-Za-z])DX(?![A-Za-z])|数値地形図.*(?:作成|修正|更新)|デジタルデータ.*(?:作成|整備)|(?:衛星画像|空中写真).*(?:運用|処理|解析)",
+    "artificial_intelligence": "人工知能|生成AI|生成ＡＩ|(?<![A-Za-z])AI(?![A-Za-z])|ＡＩ|機械学習|深層学習|大規模言語モデル|(?<![A-Za-z])LLM(?![A-Za-z])|ChatGPT|(?<![A-Za-z])RAG(?![A-Za-z])",
+    "it_consulting_planning": "(?:システム|情報システム).*(?:標準化対応|再編成計画|計画策定支援|導入支援|調達支援|コンサルティング)|システム.*調達仕様書作成支援"
+  },
+  "subgroup_definitions": {
+    "system_development": {
+      "level": "core_it_delivery",
+      "meaning": "Design, development, construction, implementation, modification, replacement, or renewal of an information system.",
+      "examples": [
+        "システム開発",
+        "情報システム構築",
+        "システム改修",
+        "システム更新"
+      ],
+      "boundary": "A title containing the generic word システム is not enough unless it also indicates a development or implementation action."
+    },
+    "system_services": {
+      "level": "core_it_delivery",
+      "meaning": "Provision of, or usage support for, an information system when the title does not explicitly describe development or operations.",
+      "examples": [
+        "検索システム提供役務",
+        "情報システム利用支援"
+      ],
+      "boundary": "Physical or non-information systems are outside the intended scope."
+    },
+    "software_applications": {
+      "level": "core_it_delivery",
+      "meaning": "Procurement, provision, licensing, development, or support of software and applications.",
+      "examples": [
+        "ソフトウェア保守",
+        "アプリケーション改修",
+        "Web会議用ライセンス"
+      ],
+      "boundary": "Generic licenses without a clear software or application context are not matched."
+    },
+    "operations_maintenance": {
+      "level": "core_it_delivery",
+      "meaning": "Ongoing operation, administration, support, or maintenance of an information system.",
+      "examples": [
+        "システム運用",
+        "情報システム保守",
+        "運用保守業務"
+      ],
+      "boundary": "Maintenance of scientific, mechanical, camera, or other physical equipment may be outside scope unless an information system is explicit."
+    },
+    "cloud": {
+      "level": "core_it_delivery",
+      "meaning": "Cloud platforms, hosted infrastructure, cloud migration, SaaS, IaaS, PaaS, or related cloud support.",
+      "examples": [
+        "クラウドサービス",
+        "AWSクラウド環境",
+        "SaaS環境構築"
+      ],
+      "boundary": "The title must explicitly indicate cloud technology or a named cloud-service model."
+    },
+    "cybersecurity": {
+      "level": "core_it_delivery",
+      "meaning": "Information and cybersecurity services, including audits, advisory work, vulnerability testing, security controls, and zero-trust work.",
+      "examples": [
+        "情報セキュリティ監査",
+        "脆弱性診断",
+        "セキュリティ対策支援"
+      ],
+      "boundary": "Physical guarding and general security services are not cybersecurity."
+    },
+    "network_infrastructure": {
+      "level": "core_it_delivery",
+      "meaning": "Computer networks, servers, data-center infrastructure, network configuration, and related technical support.",
+      "examples": [
+        "ネットワーク構築",
+        "サーバ運用",
+        "データセンター"
+      ],
+      "boundary": "Physical telecommunications towers, public-address radio, CCTV, and data-center industry promotion may be adjacent or out of scope."
+    },
+    "end_user_computing": {
+      "level": "core_it_delivery",
+      "meaning": "Setup, configuration, deployment, or preparation of personal computers and end-user devices.",
+      "examples": [
+        "PCキッティング",
+        "端末セットアップ"
+      ],
+      "boundary": "General equipment maintenance and office-machine maintenance are not automatically included."
+    },
+    "data_digital": {
+      "level": "digital_or_ai_adjacent_unless_core",
+      "meaning": "Data platforms, data integration, data migration, digitization, and broader digital-transformation or DX work.",
+      "examples": [
+        "データ基盤",
+        "データ連携",
+        "データ化",
+        "DX推進"
+      ],
+      "boundary": "Training, policy support, consulting, video production, and industry-promotion work may be digitally adjacent rather than technical IT delivery."
+    },
+    "artificial_intelligence": {
+      "level": "digital_or_ai_adjacent_unless_core",
+      "meaning": "Artificial intelligence, machine learning, generative AI, large language models, RAG, and related AI services or studies.",
+      "examples": [
+        "生成AI",
+        "機械学習",
+        "LLM",
+        "RAG検索システム"
+      ],
+      "boundary": "AI surveys, education, exhibitions, literacy programs, and policy studies may be AI-adjacent rather than technical AI delivery."
+    },
+    "it_consulting_planning": {
+      "level": "core_it_delivery",
+      "meaning": "Technical planning, standardization, procurement support, implementation advice, or consulting for an information system.",
+      "examples": [
+        "情報システム調達支援",
+        "システム標準化対応",
+        "医療情報システム導入コンサルティング"
+      ],
+      "boundary": "General business consulting, promotion, policy, and training without an explicit information-system context are outside scope."
+    }
+  },
+  "core_it_delivery_subgroups": [
+    "system_development",
+    "system_services",
+    "software_applications",
+    "operations_maintenance",
+    "cloud",
+    "cybersecurity",
+    "network_infrastructure",
+    "end_user_computing",
+    "it_consulting_planning"
+  ],
+  "adjacent_subgroups": [
+    "data_digital",
+    "artificial_intelligence"
+  ],
+  "high_level_logic": {
+    "it_related": "matches any pattern",
+    "core_it_delivery": "matches any core_it_delivery_subgroups pattern",
+    "digital_or_ai_adjacent": "matches data_digital or artificial_intelligence and does not match core_it_delivery"
+  },
+  "validation": {
+    "matched_titles": "manually inspected subgroup samples",
+    "unmatched_review_round_1": {
+      "sample_size": 100,
+      "clear_missed_it": 4,
+      "uncertain": 6
+    },
+    "unmatched_review_round_2": {
+      "sample_size": 100,
+      "clear_missed_it": 0,
+      "uncertain": 11
+    },
+    "historical_diagnostic_unmatched": {
+      "sample_size": 100,
+      "clear_false_negatives": 3,
+      "uncertain": 4,
+      "sampling": "balanced across year and prefecture; diagnostic, not an error-rate estimate"
+    },
+    "historical_diagnostic_matched": {
+      "sample_size": 100,
+      "clear_false_positives": 7,
+      "uncertain": 4,
+      "correct_it": 89,
+      "sampling": "stratified across active subgroups, years, and prefectures; diagnostic, not an error-rate estimate"
+    }
+  },
+  "known_exclusions_or_boundaries": [
+    "digital training without technical delivery",
+    "BPR or digital consulting without explicit technical delivery",
+    "physical telecommunications and CCTV maintenance",
+    "embedded systems where software work is not explicit",
+    "generic or unusable project titles"
+  ],
+  "limitations": [
+    "not an official KKJ classification",
+    "title-only matching can produce false positives and false negatives",
+    "counts represent notices, not necessarily unique underlying projects",
+    "subgroups overlap"
+  ],
+  "derived_from": "reference_data/it_service_taxonomy_v1_1_candidate.json after first simple-random holdout review",
+  "exclusion_patterns": {
+    "system_development": "AI.*(?:英語授業|英会話).*実施|研究・開発.*ネットワークシステム.*(?:管理|コンサルティング)|システム構築促進事業.*(?:データベース|サーバ).*(?:運用|保守)|(?:AI|ＡＩ).*(?:英語授業|英会話).*実施|アンケート調査.*(?:AI|ＡＩ)|(?:AI|ＡＩ).*人材(?:育成|開発)|(?:AI|ＡＩ).*構築用.*試験|(?:気象観測|警備|自動搬送|映像収録|生体情報モニタリング|ポータブルＦＰＤ|ポータブルFPD|脳外用ナビゲーション|SPO2|ＳＰＯ２|眼科診療支援|防犯カメラ).*システム",
+    "artificial_intelligence": "(?:AI|人工知能).*EXPO.*(?:会場設営|運営)|AI.*(?:英語授業|英会話).*実施|(?:AI|ＡＩ).*(?:英語授業|英会話).*実施|アンケート調査.*(?:AI|ＡＩ)|(?:AI|ＡＩ).*人材(?:育成|開発)|(?:AI|ＡＩ).*構築用.*試験",
+    "data_digital": "(?:DX.*(?:研修|人材育成)|(?:研修|人材育成).*DX)|アンケート調査.*デジタル化|衛星画像解析箇所.*現地調査",
+    "network_infrastructure": "データセンター集積推進事業.*(?:立地支援|セミナー)",
+    "software_applications": "(?:ホームページ|ウェブサイト|Webサイト|Webページ).*(?:コンテンツ.*(?:維持管理|制作)|スタッフ派遣)|外国語版.*(?:ホームページ|ウェブサイト|Webサイト)",
+    "it_consulting_planning": "ベンチマークシステムの利用及び総合コンサルティング",
+    "operations_maintenance": "(?:気象観測|警備|自動搬送|映像収録|生体情報モニタリング|ポータブルＦＰＤ|ポータブルFPD|脳外用ナビゲーション|SPO2|ＳＰＯ２|眼科診療支援|防犯カメラ).*システム",
+    "cybersecurity": "能力構築支援事業.*サイバーセキュリティ.*(?:招へい|実施に係る支援)"
+  },
+  "candidate_revision_rationale": {
+    "clear_false_negative_additions": [
+      "information/computer-system relocation",
+      "numerical geospatial map creation or revision",
+      "website construction, revision, or renewal"
+    ],
+    "clear_false_positive_exclusions": [
+      "AI exhibition venue setup or operation",
+      "AI-assisted English lesson delivery without technical implementation",
+      "DX training and human-resource development",
+      "survey work about digitalization",
+      "data-center industry promotion, location support, and seminars",
+      "survey work about AI adoption or workforce development",
+      "foreign-language website content, website-content staffing, and content production without technical implementation"
+    ],
+    "tagging_improvements": [
+      "technical AI implementation and maintenance can receive core tags",
+      "technical data-platform construction and system data migration can receive core tags",
+      "information-system consulting and planning has an explicit core subgroup",
+      "explicit system-use procurement can be tagged as system services rather than system consulting"
+    ]
+  },
+  "candidate2_holdout_rationale": {
+    "first_matched_holdout": {
+      "sample_size": 150,
+      "correct_it": 135,
+      "clear_false_positives": 9,
+      "uncertain": 6,
+      "correct_it_with_tag_concerns": 4
+    },
+    "first_unmatched_holdout": {
+      "sample_size": 200,
+      "clear_false_negatives": 7,
+      "uncertain": 1,
+      "not_it": 192
+    },
+    "changes": [
+      "exclude physical observation, security-camera, conveyance, audiovisual, and medical-equipment systems unless clearer IT terminology is present",
+      "exclude AI project-context testing and cybersecurity invitation/capability-event support",
+      "add system fault diagnosis and help desk",
+      "add medical billing computer rental, IP communications support, digital document data, satellite imagery operations, and website operations/transition",
+      "improve core tags for LLM development, AI platform configuration, system improvement, and procurement-specification support",
+      "exclude physical field surveys where satellite-image analysis only identifies survey locations"
+    ]
+  }
+}

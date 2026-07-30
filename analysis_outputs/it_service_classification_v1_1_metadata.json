@@ -1,0 +1,28 @@
+{
+  "created_at": "2026-07-30T12:33:48.132204+00:00",
+  "database": "service_history.sqlite",
+  "taxonomy": "reference_data/it_service_taxonomy_v1_1.json",
+  "taxonomy_version": "1.1.0",
+  "taxonomy_sha256": "05d2bb5b7728e005cf0cc6bae9a0c01df8ef00bfcdc4fb5eb87eb142e38d8050",
+  "excluded_large_source_fields": [
+    "raw_xml",
+    "project_description"
+  ],
+  "service_notice_count": 15230,
+  "it_related_notice_count": 762,
+  "core_it_delivery_notice_count": 691,
+  "digital_or_ai_adjacent_notice_count": 71,
+  "subgroup_notice_counts": {
+    "system_development": 227,
+    "system_services": 19,
+    "software_applications": 67,
+    "operations_maintenance": 293,
+    "cloud": 50,
+    "cybersecurity": 32,
+    "network_infrastructure": 145,
+    "end_user_computing": 4,
+    "data_digital": 55,
+    "artificial_intelligence": 41,
+    "it_consulting_planning": 30
+  }
+}

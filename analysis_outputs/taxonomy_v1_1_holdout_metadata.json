@@ -1,0 +1,19 @@
+{
+  "classification_input": "analysis_outputs/service_notices_classified_v1_1_candidate.csv",
+  "taxonomy_version": "1.1.0-candidate",
+  "sampling_method": "simple random sampling without replacement",
+  "random_state_matched": 20260731,
+  "random_state_unmatched": 20260732,
+  "development_files_excluded": [
+    "analysis_outputs/unmatched_service_titles_reviewed.csv",
+    "analysis_outputs/unmatched_service_titles_review_round2_reviewed.csv",
+    "analysis_outputs/historical_unmatched_taxonomy_review_v1_reviewed.csv",
+    "analysis_outputs/historical_matched_taxonomy_review_v1_reviewed.csv",
+    "analysis_outputs/taxonomy_v1_to_v1_1_candidate_changes_reviewed.csv"
+  ],
+  "unique_development_keys_excluded": 468,
+  "eligible_matched_population": 566,
+  "eligible_unmatched_population": 14322,
+  "matched_sample_size": 150,
+  "unmatched_sample_size": 200
+}

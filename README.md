@@ -209,6 +209,44 @@ subgroup_definitions = taxonomy["subgroup_definitions"]
 
 The JSON documents each subgroup's meaning, examples, and boundaries. Detailed subgroups can overlap. At the exclusive high level, core technical delivery takes priority; `digital_or_ai_adjacent` contains data/digital or AI matches that do not match a core subgroup.
 
+### Apply the taxonomy to historical notices
+
+Run the reproducible classifier against the completed historical database:
+
+```bash
+uv run python -m one_off_scripts.classify_it_service_notices
+```
+
+Default inputs:
+
+```text
+service_history.sqlite
+reference_data/it_service_taxonomy_v1.json
+```
+
+Outputs:
+
+```text
+analysis_outputs/service_notices_classified_v1.csv
+analysis_outputs/it_service_notices_v1.csv
+analysis_outputs/it_service_classification_v1_metadata.json
+```
+
+The first CSV contains every historical service notice and the second contains only `it_related=True` notices. Both include detailed subgroup booleans, `matched_subgroups`, `subgroup_count`, `core_it_delivery`, `digital_or_ai_adjacent`, and `taxonomy_version`. Large `raw_xml` and `project_description` fields remain in SQLite rather than being duplicated in the CSVs. The metadata file records the taxonomy SHA-256 hash, source paths, row counts, and subgroup counts.
+
+The version 1 run classified 15,230 services and identified 712 IT-related notices: 628 core IT-delivery notices and 84 exclusively digital/AI-adjacent notices. These counts remain provisional until historical taxonomy-drift validation is complete.
+
+Override any paths when needed:
+
+```bash
+uv run python -m one_off_scripts.classify_it_service_notices \
+  --database service_history.sqlite \
+  --taxonomy reference_data/it_service_taxonomy_v1.json \
+  --output analysis_outputs/service_notices_classified_v1.csv \
+  --it-output analysis_outputs/it_service_notices_v1.csv \
+  --metadata-output analysis_outputs/it_service_classification_v1_metadata.json
+```
+
 ### Validation sample and review process
 
 Validation used the 6,000 sampled service notices in SQLite (`1,000 notices × 6 prefectures`). Because those API responses are capped and their ordering is undocumented, this sample was used to develop the taxonomy—not to estimate the complete IT-services market.
@@ -347,12 +385,24 @@ Research question:
 - [x] Implement restartable monthly collection with recursive date splitting, response-count verification, KKJ-key deduplication, and persistent period status.
 - [x] Complete 2022–2025 historical service collection for all six prefectures in `service_history.sqlite`.
 - [x] Verify 288 completed monthly periods, zero failed periods, and 15,230 expected/returned/stored service notices. No month required splitting.
+- [x] Create and run a reproducible classification script that loads taxonomy version 1, tags all 15,230 historical notices, and exports analysis-ready data plus provenance metadata.
+- [x] Save a 24-row collection-completeness audit by year and prefecture; annual search hits, completed-period hits, returned notices, and 15,230 stored notices all agree.
+- [x] Generate deterministic historical validation samples: 100 unmatched notices and 100 unique matched notices stratified across active subgroups, years, and prefectures.
 
 ### Next session
 
-- [ ] Create a reproducible classification script that loads taxonomy version 1, tags all 15,230 historical notices, and exports analysis-ready data.
-- [ ] Save a collection-completeness audit by year and prefecture from `collection_periods` and compare it with `annual_counts.csv`.
-- [ ] Validate taxonomy drift on the historical dataset with a deterministic unmatched sample and a matched sample stratified across subgroups, years, and prefectures.
+- [x] Manually review both historical validation samples. The unmatched sample found 3 clear false negatives, 93 non-IT notices, and 4 uncertain cases; the matched sample found 89 correct IT matches, 7 clear false positives, and 4 uncertain cases. Because sampling was stratified, these ratios are diagnostic rather than population error-rate estimates.
+- [x] Draft taxonomy `1.1.0-candidate`, add targeted subgroup exclusions, reclassify the full dataset, and inspect all changed rows.
+- [x] Run the first independent simple-random holdout after excluding development samples. The matched holdout found 135 correct IT, 9 clear false positives, 6 uncertain, and 4 correct IT notices with tag concerns; the unmatched holdout found 7 clear false negatives, 1 uncertain, and 192 non-IT notices.
+- [x] Treat the first holdout as a validation failure, create `1.1.0-candidate2`, address physical-system false positives and remaining terminology gaps, and inspect all 180 changes from v1.
+- [x] Generate a fresh final holdout for candidate 2 after excluding 873 previously reviewed/development keys.
+- [x] Manually adjudicate the final candidate-2 holdout: 136 correct IT, 12 false positives, and 2 uncertain among 150 matched notices; 191 non-IT, 8 false negatives, and 1 uncertain among 200 unmatched notices. Six otherwise correct IT notices also had subgroup or core/adjacent concerns.
+- [x] Reject candidate 2 for publication rather than freezing a taxonomy that failed its untouched holdout.
+- [x] Stop example-by-example Candidate 3 patching and create a simplified concept-based v1.1 candidate directly from frozen v1. The lean rules cover general IT concepts and short activity-level boundaries without enumerating particular medical devices, cameras, or equipment models.
+- [x] Review all 189 lean-candidate differences from v1: 88 concept additions, 38 concept removals, and 63 retags.
+- [x] Generate one final untouched lean-candidate holdout after excluding 1,269 previously reviewed/development keys.
+- [x] Adjudicate the final lean holdout without further regex tuning: 138 correct IT, 7 false positives, and 5 uncertain among 150 matched notices; 186 non-IT, 12 false negatives, and 2 uncertain among 200 unmatched notices. Six otherwise correct IT notices had tag concerns.
+- [x] Freeze lean taxonomy v1.1 strictly as a reproducible title-based IT-services indicator—not a comprehensive census—and generate final classified report datasets and metadata.
 - [ ] If clear new terminology is found, create a new taxonomy version rather than silently changing version 1.
 - [ ] Freeze the validated historical classification before interpreting trends.
 
