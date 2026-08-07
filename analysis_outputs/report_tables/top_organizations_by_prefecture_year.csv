@@ -1,0 +1,143 @@
+prefecture_name,cft_issue_year,organization_name,it_notices,core_it_notices,adjacent_only_notices,system_development,system_services,software_applications,operations_maintenance,cloud,cybersecurity,network_infrastructure,end_user_computing,data_digital,artificial_intelligence,it_consulting_planning,prefecture_year_it_notices,organization_share_percent,rank,prefecture_label,leading_subgroups,leading_subgroup_count
+北海道,2022,国土交通省北海道開発局留萌開発建設部,6,6,0,2,0,0,4,0,0,2,0,0,0,0,8,75.0,1,Hokkaido,Operations and maintenance,4
+北海道,2022,北海道,1,1,0,1,0,0,0,0,0,0,0,0,0,0,8,12.5,2,Hokkaido,System development,1
+北海道,2022,独立行政法人国立病院機構帯広病院,1,1,0,0,0,0,1,0,0,0,0,0,0,0,8,12.5,2,Hokkaido,Operations and maintenance,1
+大阪府,2022,大阪府大阪市,7,7,0,2,1,0,2,2,0,0,0,2,0,2,19,36.84210526315789,1,Osaka,System development | Operations and maintenance | Cloud | Data and digital | IT consulting and planning,2
+大阪府,2022,大阪府箕面市,6,6,0,2,1,1,2,1,1,2,0,0,1,0,19,31.57894736842105,2,Osaka,System development | Operations and maintenance | Network infrastructure,2
+大阪府,2022,大阪府門真市,2,2,0,0,0,0,0,0,0,2,0,0,0,0,19,10.526315789473683,3,Osaka,Network infrastructure,2
+大阪府,2022,独立行政法人国立病院機構近畿中央呼吸器センター,2,2,0,0,0,0,2,0,0,0,0,0,0,0,19,10.526315789473683,3,Osaka,Operations and maintenance,2
+大阪府,2022,独立行政法人国立病院機構大阪刀根山医療センター,1,1,0,0,0,0,1,0,0,0,0,0,0,0,19,5.263157894736842,5,Osaka,Operations and maintenance,1
+大阪府,2022,独立行政法人国立病院機構大阪南医療センター,1,0,1,0,0,0,0,0,0,0,0,1,0,0,19,5.263157894736842,5,Osaka,Data and digital,1
+愛知県,2022,国土交通省中部地方整備局,17,17,0,9,1,2,1,1,0,3,0,0,1,0,27,62.96296296296296,1,Aichi,System development,9
+愛知県,2022,国土交通省中部地方整備局港湾空港部,5,5,0,0,1,0,4,0,0,2,0,0,0,0,27,18.51851851851852,2,Aichi,Operations and maintenance,4
+愛知県,2022,国立研究開発法人国立長寿医療研究センター,3,3,0,0,0,0,3,0,0,0,0,0,0,0,27,11.11111111111111,3,Aichi,Operations and maintenance,3
+愛知県,2022,厚生労働省愛知労働局,1,1,0,0,0,0,1,0,0,1,0,0,0,0,27,3.7037037037037033,4,Aichi,Operations and maintenance | Network infrastructure,1
+愛知県,2022,国土交通省中部運輸局,1,1,0,0,0,0,1,0,0,1,0,0,0,0,27,3.7037037037037033,4,Aichi,Operations and maintenance | Network infrastructure,1
+東京都,2022,防衛省自衛隊,10,10,0,2,0,1,3,1,2,0,0,0,0,3,39,25.64102564102564,1,Tokyo,Operations and maintenance | IT consulting and planning,3
+東京都,2022,防衛省陸上自衛隊東部方面会計隊,10,6,4,4,0,0,1,0,0,1,0,4,0,0,39,25.64102564102564,1,Tokyo,System development | Data and digital,4
+東京都,2022,防衛省防衛研究所,4,2,2,0,0,0,2,0,0,0,0,2,0,0,39,10.256410256410255,3,Tokyo,Operations and maintenance | Data and digital,2
+東京都,2022,水産庁,3,3,0,0,0,1,3,0,0,0,0,0,0,0,39,7.6923076923076925,4,Tokyo,Operations and maintenance,3
+東京都,2022,独立行政法人日本スポーツ振興センター,3,3,0,0,0,0,3,0,0,0,0,0,0,0,39,7.6923076923076925,4,Tokyo,Operations and maintenance,3
+神奈川県,2022,独立行政法人労働者健康安全機構,4,4,0,1,0,0,2,0,1,1,0,0,0,0,11,36.36363636363637,1,Kanagawa,Operations and maintenance,2
+神奈川県,2022,神奈川県秦野市,4,3,1,1,0,0,1,0,0,1,0,1,0,1,11,36.36363636363637,1,Kanagawa,System development | Operations and maintenance | Network infrastructure | Data and digital | IT consulting and planning,1
+神奈川県,2022,独立行政法人国立病院機構久里浜医療センター,3,3,0,3,0,0,0,0,0,0,0,0,0,0,11,27.27272727272727,3,Kanagawa,System development,3
+福岡県,2022,国立大学法人九州工業大学,6,6,0,2,0,3,0,1,0,1,0,0,2,0,13,46.15384615384615,1,Fukuoka,Software and applications,3
+福岡県,2022,国家公安委員会（警察庁）福岡県警察,2,1,1,0,0,0,1,0,0,0,0,1,0,0,13,15.384615384615385,2,Fukuoka,Operations and maintenance | Data and digital,1
+福岡県,2022,国土交通省九州地方整備局,1,1,0,1,0,0,1,0,0,0,0,0,0,0,13,7.6923076923076925,3,Fukuoka,System development | Operations and maintenance,1
+福岡県,2022,独立行政法人国立病院機構九州がんセンター,1,1,0,0,0,0,1,0,0,0,0,0,0,0,13,7.6923076923076925,3,Fukuoka,Operations and maintenance,1
+福岡県,2022,独立行政法人国立病院機構九州医療センター,1,1,0,0,0,1,0,0,0,0,0,0,0,0,13,7.6923076923076925,3,Fukuoka,Software and applications,1
+福岡県,2022,独立行政法人国立病院機構福岡東医療センター,1,1,0,0,0,0,1,0,0,0,0,0,0,0,13,7.6923076923076925,3,Fukuoka,Operations and maintenance,1
+福岡県,2022,防衛省九州防衛局,1,1,0,0,0,0,1,0,0,1,0,0,0,0,13,7.6923076923076925,3,Fukuoka,Operations and maintenance | Network infrastructure,1
+北海道,2023,北海道,7,7,0,5,0,0,2,0,0,0,0,0,0,0,12,58.333333333333336,1,Hokkaido,System development,5
+北海道,2023,国土交通省北海道開発局留萌開発建設部,2,2,0,1,0,0,2,0,0,0,0,0,0,0,12,16.666666666666664,2,Hokkaido,Operations and maintenance,2
+北海道,2023,北海道深川市,1,1,0,1,0,0,0,0,0,0,0,0,0,0,12,8.333333333333332,3,Hokkaido,System development,1
+北海道,2023,厚生労働省北海道労働局,1,1,0,1,0,0,0,0,0,0,0,0,0,0,12,8.333333333333332,3,Hokkaido,System development,1
+北海道,2023,独立行政法人国立病院機構北海道がんセンター,1,1,0,0,0,0,1,0,0,0,0,0,0,0,12,8.333333333333332,3,Hokkaido,Operations and maintenance,1
+大阪府,2023,大阪府大阪市,11,11,0,5,1,4,4,0,1,0,0,1,0,0,20,55.00000000000001,1,Osaka,System development,5
+大阪府,2023,大阪府箕面市,7,6,1,4,1,0,1,0,1,0,0,1,0,0,20,35.0,2,Osaka,System development,4
+大阪府,2023,大阪府門真市,1,1,0,0,0,0,0,0,0,1,0,0,0,0,20,5.0,3,Osaka,Network infrastructure,1
+大阪府,2023,独立行政法人国立病院機構近畿中央呼吸器センター,1,1,0,0,0,0,1,0,0,0,0,0,0,0,20,5.0,3,Osaka,Operations and maintenance,1
+愛知県,2023,国立研究開発法人国立長寿医療研究センター,13,13,0,4,0,0,9,1,0,1,0,1,0,0,26,50.0,1,Aichi,Operations and maintenance,9
+愛知県,2023,国土交通省中部地方整備局,8,6,2,2,1,1,1,0,0,1,0,0,2,0,26,30.76923076923077,2,Aichi,System development | Artificial intelligence,2
+愛知県,2023,厚生労働省愛知労働局,1,1,0,0,0,0,1,0,0,1,0,0,0,0,26,3.8461538461538463,3,Aichi,Operations and maintenance | Network infrastructure,1
+愛知県,2023,国土交通省中部運輸局,1,1,0,0,0,0,1,0,0,1,0,0,0,0,26,3.8461538461538463,3,Aichi,Operations and maintenance | Network infrastructure,1
+愛知県,2023,海上保安庁第四管区海上保安本部,1,1,0,0,0,0,1,0,0,0,0,0,0,0,26,3.8461538461538463,3,Aichi,Operations and maintenance,1
+愛知県,2023,独立行政法人国立病院機構豊橋医療センター,1,1,0,0,0,0,1,0,0,0,0,0,0,0,26,3.8461538461538463,3,Aichi,Operations and maintenance,1
+愛知県,2023,防衛省東海防衛支局,1,1,0,0,0,0,1,0,0,1,0,0,0,0,26,3.8461538461538463,3,Aichi,Operations and maintenance | Network infrastructure,1
+東京都,2023,防衛省自衛隊,40,37,3,6,0,2,16,3,1,9,2,3,0,3,93,43.01075268817204,1,Tokyo,Operations and maintenance,16
+東京都,2023,水産庁,10,10,0,7,0,0,9,1,0,1,0,1,0,0,93,10.75268817204301,2,Tokyo,Operations and maintenance,9
+東京都,2023,国立大学法人東京工業大学,8,7,1,3,0,1,3,0,0,3,0,1,0,0,93,8.60215053763441,3,Tokyo,System development | Operations and maintenance | Network infrastructure,3
+東京都,2023,防衛省,6,4,2,1,0,0,1,1,0,1,0,1,2,1,93,6.451612903225806,4,Tokyo,Artificial intelligence,2
+東京都,2023,防衛省陸上自衛隊東部方面会計隊,6,4,2,3,0,0,1,0,0,0,0,2,0,0,93,6.451612903225806,4,Tokyo,System development,3
+神奈川県,2023,防衛省防衛大学校,6,6,0,2,0,1,1,2,0,2,0,0,0,0,15,40.0,1,Kanagawa,System development | Cloud | Network infrastructure,2
+神奈川県,2023,海上保安庁第三管区海上保安本部,2,2,0,0,0,0,1,0,0,1,0,0,0,0,15,13.333333333333334,2,Kanagawa,Operations and maintenance | Network infrastructure,1
+神奈川県,2023,独立行政法人労働者健康安全機構,2,2,0,0,0,0,1,0,1,0,0,0,0,0,15,13.333333333333334,2,Kanagawa,Operations and maintenance | Cybersecurity,1
+神奈川県,2023,独立行政法人国立病院機構横浜市南西部地域中核病院横浜医療センター,2,2,0,0,0,0,2,0,0,0,0,0,0,0,15,13.333333333333334,2,Kanagawa,Operations and maintenance,2
+神奈川県,2023,神奈川県秦野市,2,0,2,0,0,0,0,0,0,0,0,2,0,0,15,13.333333333333334,2,Kanagawa,Data and digital,2
+福岡県,2023,福岡県,7,5,2,3,0,0,1,1,0,1,0,1,1,0,17,41.17647058823529,1,Fukuoka,System development,3
+福岡県,2023,国家公安委員会（警察庁）福岡県警察,3,2,1,0,0,0,1,0,0,1,0,1,0,0,17,17.647058823529413,2,Fukuoka,Operations and maintenance | Network infrastructure | Data and digital,1
+福岡県,2023,国土交通省九州地方整備局,1,1,0,1,0,0,1,0,0,0,0,0,0,0,17,5.88235294117647,3,Fukuoka,System development | Operations and maintenance,1
+福岡県,2023,国立大学法人九州工業大学,1,0,1,0,0,0,0,0,0,0,0,0,1,0,17,5.88235294117647,3,Fukuoka,Artificial intelligence,1
+福岡県,2023,独立行政法人国立病院機構大牟田病院,1,1,0,1,0,0,0,0,0,0,0,0,0,1,17,5.88235294117647,3,Fukuoka,System development | IT consulting and planning,1
+福岡県,2023,独立行政法人国立病院機構小倉医療センター,1,1,0,0,0,0,1,0,0,0,0,0,0,0,17,5.88235294117647,3,Fukuoka,Operations and maintenance,1
+福岡県,2023,福岡県久留米市,1,0,1,0,0,0,0,0,0,0,0,1,0,0,17,5.88235294117647,3,Fukuoka,Data and digital,1
+福岡県,2023,経済産業省,1,0,1,0,0,0,0,0,0,0,0,1,0,0,17,5.88235294117647,3,Fukuoka,Data and digital,1
+福岡県,2023,防衛省九州防衛局,1,1,0,0,0,0,1,0,0,1,0,0,0,0,17,5.88235294117647,3,Fukuoka,Operations and maintenance | Network infrastructure,1
+北海道,2024,国家公安委員会（警察庁）北海道警察本部会計課,4,4,0,2,0,0,2,0,0,1,0,0,0,0,13,30.76923076923077,1,Hokkaido,System development | Operations and maintenance,2
+北海道,2024,北海道,3,3,0,1,0,0,2,0,0,0,0,0,0,0,13,23.076923076923077,2,Hokkaido,Operations and maintenance,2
+北海道,2024,財務省,2,2,0,2,0,0,0,0,0,0,0,0,0,0,13,15.384615384615385,3,Hokkaido,System development,2
+北海道,2024,防衛省陸上自衛隊北部方面会計隊本部,2,2,0,0,0,2,0,0,0,0,0,0,0,0,13,15.384615384615385,3,Hokkaido,Software and applications,2
+北海道,2024,防衛省,1,1,0,0,0,0,1,0,0,1,0,0,0,0,13,7.6923076923076925,5,Hokkaido,Operations and maintenance | Network infrastructure,1
+北海道,2024,防衛省陸上自衛隊北海道補給処,1,1,0,1,0,0,0,0,0,0,0,0,0,0,13,7.6923076923076925,5,Hokkaido,System development,1
+大阪府,2024,大阪府大阪市,16,11,5,5,4,1,6,1,0,1,0,5,0,0,28,57.14285714285714,1,Osaka,Operations and maintenance,6
+大阪府,2024,大阪府箕面市,8,8,0,4,0,2,3,0,0,2,0,0,1,0,28,28.57142857142857,2,Osaka,System development,4
+大阪府,2024,法務省,1,1,0,0,0,0,1,0,0,0,0,0,0,0,28,3.571428571428571,3,Osaka,Operations and maintenance,1
+大阪府,2024,独立行政法人労働者健康安全機構大阪労災病院,1,1,0,0,0,0,0,0,0,1,0,0,0,0,28,3.571428571428571,3,Osaka,Network infrastructure,1
+大阪府,2024,独立行政法人国立病院機構近畿中央呼吸器センター,1,1,0,0,0,0,1,0,0,0,0,0,0,0,28,3.571428571428571,3,Osaka,Operations and maintenance,1
+大阪府,2024,防衛省,1,1,0,0,0,0,1,0,0,1,0,0,0,0,28,3.571428571428571,3,Osaka,Operations and maintenance | Network infrastructure,1
+愛知県,2024,国立研究開発法人国立長寿医療研究センター,8,8,0,1,0,1,8,0,0,2,0,0,0,0,14,57.14285714285714,1,Aichi,Operations and maintenance,8
+愛知県,2024,海上保安庁第四管区海上保安本部,2,2,0,1,0,0,1,0,0,0,0,0,0,0,14,14.285714285714285,2,Aichi,System development | Operations and maintenance,1
+愛知県,2024,防衛省東海防衛支局,2,2,0,0,0,0,1,0,0,2,0,0,0,0,14,14.285714285714285,2,Aichi,Network infrastructure,2
+愛知県,2024,厚生労働省,1,1,0,0,0,0,1,0,0,1,0,0,0,0,14,7.142857142857142,4,Aichi,Operations and maintenance | Network infrastructure,1
+愛知県,2024,厚生労働省愛知労働局,1,1,0,0,0,0,1,0,0,1,0,0,0,0,14,7.142857142857142,4,Aichi,Operations and maintenance | Network infrastructure,1
+東京都,2024,防衛省自衛隊,19,11,8,0,0,1,2,2,2,2,1,0,8,1,102,18.627450980392158,1,Tokyo,Artificial intelligence,8
+東京都,2024,国立大学法人東京工業大学,11,11,0,4,0,0,4,1,0,4,0,0,0,0,102,10.784313725490197,2,Tokyo,System development | Operations and maintenance | Network infrastructure,4
+東京都,2024,防衛省陸上自衛隊東部方面会計隊,10,8,2,0,0,3,0,0,0,5,0,0,2,0,102,9.803921568627452,3,Tokyo,Network infrastructure,5
+東京都,2024,国立研究開発法人産業技術総合研究所,8,8,0,2,1,0,3,3,1,0,0,0,0,1,102,7.8431372549019605,4,Tokyo,Operations and maintenance | Cloud,3
+東京都,2024,環境省,7,7,0,3,0,0,5,0,0,1,0,0,0,0,102,6.862745098039216,5,Tokyo,Operations and maintenance,5
+東京都,2024,防衛省,7,6,1,0,0,0,2,1,0,3,0,0,1,0,102,6.862745098039216,5,Tokyo,Network infrastructure,3
+神奈川県,2024,防衛省陸上自衛隊久里浜駐屯地,5,5,0,0,0,0,2,0,0,3,0,0,0,0,18,27.77777777777778,1,Kanagawa,Network infrastructure,3
+神奈川県,2024,独立行政法人労働者健康安全機構,4,4,0,1,0,0,2,0,1,1,0,0,0,0,18,22.22222222222222,2,Kanagawa,Operations and maintenance,2
+神奈川県,2024,防衛省防衛大学校,3,3,0,0,0,0,0,0,1,2,0,0,0,0,18,16.666666666666664,3,Kanagawa,Network infrastructure,2
+神奈川県,2024,国立研究開発法人新エネルギー・産業技術総合開発機構,1,1,0,0,0,0,0,1,0,0,0,0,0,0,18,5.555555555555555,4,Kanagawa,Cloud,1
+神奈川県,2024,海上保安庁第三管区海上保安本部,1,1,0,0,0,0,1,0,0,0,0,0,0,0,18,5.555555555555555,4,Kanagawa,Operations and maintenance,1
+神奈川県,2024,独立行政法人国立病院機構久里浜医療センター,1,1,0,1,0,0,1,0,0,0,0,0,0,0,18,5.555555555555555,4,Kanagawa,System development | Operations and maintenance,1
+神奈川県,2024,神奈川県秦野市,1,1,0,0,0,0,1,0,0,0,0,0,0,0,18,5.555555555555555,4,Kanagawa,Operations and maintenance,1
+神奈川県,2024,防衛省,1,1,0,0,0,0,1,0,0,1,0,0,0,0,18,5.555555555555555,4,Kanagawa,Operations and maintenance | Network infrastructure,1
+神奈川県,2024,防衛省南関東防衛局,1,1,0,0,0,0,1,0,0,1,0,0,0,0,18,5.555555555555555,4,Kanagawa,Operations and maintenance | Network infrastructure,1
+福岡県,2024,福岡県,12,12,0,4,0,0,8,1,0,1,0,0,0,0,26,46.15384615384615,1,Fukuoka,Operations and maintenance,8
+福岡県,2024,国土交通省,3,3,0,2,0,0,2,0,0,1,0,0,0,0,26,11.538461538461538,2,Fukuoka,System development | Operations and maintenance,2
+福岡県,2024,国土交通省九州地方整備局,2,2,0,1,0,0,1,0,0,1,0,0,0,0,26,7.6923076923076925,3,Fukuoka,System development | Operations and maintenance | Network infrastructure,1
+福岡県,2024,国家公安委員会（警察庁）福岡県警察,2,1,1,0,0,0,1,0,0,0,0,1,0,0,26,7.6923076923076925,3,Fukuoka,Operations and maintenance | Data and digital,1
+福岡県,2024,財務省,2,2,0,0,0,2,0,0,0,0,0,0,0,0,26,7.6923076923076925,3,Fukuoka,Software and applications,2
+北海道,2025,北海道,13,11,2,8,0,1,2,0,0,0,0,2,0,0,27,48.148148148148145,1,Hokkaido,System development,8
+北海道,2025,防衛省陸上自衛隊北部方面会計隊本部,3,3,0,0,0,3,0,0,0,0,0,0,0,0,27,11.11111111111111,2,Hokkaido,Software and applications,3
+北海道,2025,北海道伊達市,2,2,0,0,0,0,0,1,1,0,0,0,0,0,27,7.4074074074074066,3,Hokkaido,Cloud | Cybersecurity,1
+北海道,2025,北海道夕張市,2,2,0,2,0,0,0,0,0,0,0,0,0,0,27,7.4074074074074066,3,Hokkaido,System development,2
+北海道,2025,厚生労働省北海道労働局,2,2,0,2,0,0,0,0,0,0,0,0,0,0,27,7.4074074074074066,3,Hokkaido,System development,2
+北海道,2025,国家公安委員会（警察庁）北海道警察本部会計課,2,2,0,0,0,0,2,0,0,1,0,0,0,0,27,7.4074074074074066,3,Hokkaido,Operations and maintenance,2
+大阪府,2025,大阪府大阪市,9,7,2,2,2,0,1,1,1,0,0,2,0,1,29,31.03448275862069,1,Osaka,System development | System services | Data and digital,2
+大阪府,2025,大阪府箕面市,9,9,0,7,0,0,0,0,1,2,0,0,0,0,29,31.03448275862069,1,Osaka,System development,7
+大阪府,2025,大阪府門真市,3,3,0,0,0,0,3,0,0,0,0,0,0,0,29,10.344827586206897,3,Osaka,Operations and maintenance,3
+大阪府,2025,独立行政法人国立病院機構大阪刀根山医療センター,2,2,0,1,0,0,1,0,0,0,0,0,0,1,29,6.896551724137931,4,Osaka,System development | Operations and maintenance | IT consulting and planning,1
+大阪府,2025,防衛省,2,2,0,0,0,0,2,0,0,2,0,0,0,0,29,6.896551724137931,4,Osaka,Operations and maintenance | Network infrastructure,2
+愛知県,2025,国土交通省中部地方整備局,8,7,1,5,0,0,3,0,0,1,0,1,0,0,17,47.05882352941176,1,Aichi,System development,5
+愛知県,2025,国立研究開発法人国立長寿医療研究センター,3,3,0,1,0,0,3,0,0,0,0,0,0,0,17,17.647058823529413,2,Aichi,Operations and maintenance,3
+愛知県,2025,防衛省東海防衛支局,2,2,0,0,0,0,1,0,0,2,0,0,0,0,17,11.76470588235294,3,Aichi,Network infrastructure,2
+愛知県,2025,厚生労働省愛知労働局,1,1,0,0,0,0,1,0,0,1,0,0,0,0,17,5.88235294117647,4,Aichi,Operations and maintenance | Network infrastructure,1
+愛知県,2025,国土交通省中部運輸局,1,1,0,1,0,0,0,0,0,1,0,0,0,0,17,5.88235294117647,4,Aichi,System development | Network infrastructure,1
+愛知県,2025,愛知県安城市,1,1,0,1,0,0,0,0,0,0,0,0,0,0,17,5.88235294117647,4,Aichi,System development,1
+愛知県,2025,海上保安庁第四管区海上保安本部,1,1,0,0,0,0,1,0,0,0,0,0,0,0,17,5.88235294117647,4,Aichi,Operations and maintenance,1
+東京都,2025,国立研究開発法人産業技術総合研究所,45,43,2,22,2,2,15,9,2,8,0,2,7,3,160,28.125,1,Tokyo,System development,22
+東京都,2025,防衛省,21,18,3,1,0,3,4,3,4,6,0,0,3,0,160,13.125,2,Tokyo,Network infrastructure,6
+東京都,2025,国立大学法人東京工業大学,11,11,0,3,0,1,7,1,0,3,0,0,1,1,160,6.875000000000001,3,Tokyo,Operations and maintenance,7
+東京都,2025,防衛省自衛隊,8,8,0,1,0,1,0,1,0,2,1,0,0,2,160,5.0,4,Tokyo,Network infrastructure | IT consulting and planning,2
+東京都,2025,林野庁,6,5,1,1,1,1,3,2,0,0,0,1,0,0,160,3.75,5,Tokyo,Operations and maintenance,3
+東京都,2025,独立行政法人日本学術振興会,6,6,0,3,0,0,3,1,1,0,0,0,0,0,160,3.75,5,Tokyo,System development | Operations and maintenance,3
+東京都,2025,環境省,6,5,1,3,0,1,1,0,0,0,0,0,1,1,160,3.75,5,Tokyo,System development,3
+東京都,2025,防衛省陸上自衛隊東部方面会計隊,6,5,1,0,0,1,0,0,0,4,0,1,0,0,160,3.75,5,Tokyo,Network infrastructure,4
+神奈川県,2025,国立研究開発法人新エネルギー・産業技術総合開発機構,6,6,0,3,0,1,2,2,0,0,0,0,0,0,19,31.57894736842105,1,Kanagawa,System development,3
+神奈川県,2025,防衛省,4,4,0,1,0,0,0,0,0,3,0,0,0,0,19,21.052631578947366,2,Kanagawa,Network infrastructure,3
+神奈川県,2025,独立行政法人労働者健康安全機構,3,3,0,1,0,0,1,0,1,1,0,0,0,0,19,15.789473684210526,3,Kanagawa,System development | Operations and maintenance | Cybersecurity | Network infrastructure,1
+神奈川県,2025,海上保安庁第三管区海上保安本部,1,1,0,0,0,0,1,0,0,0,0,0,0,0,19,5.263157894736842,4,Kanagawa,Operations and maintenance,1
+神奈川県,2025,独立行政法人労働者健康安全機構横浜労災病院,1,1,0,0,0,0,1,0,0,0,0,0,0,0,19,5.263157894736842,4,Kanagawa,Operations and maintenance,1
+神奈川県,2025,独立行政法人国立病院機構久里浜医療センター,1,1,0,1,0,0,1,0,0,0,0,0,0,0,19,5.263157894736842,4,Kanagawa,System development | Operations and maintenance,1
+神奈川県,2025,独立行政法人国立病院機構神奈川病院,1,1,0,1,0,0,0,0,0,0,0,0,0,0,19,5.263157894736842,4,Kanagawa,System development,1
+神奈川県,2025,独立行政法人国立病院機構箱根病院,1,1,0,0,0,0,1,0,0,0,0,0,0,0,19,5.263157894736842,4,Kanagawa,Operations and maintenance,1
+神奈川県,2025,神奈川県逗子市,1,1,0,0,0,0,0,0,0,1,0,0,0,0,19,5.263157894736842,4,Kanagawa,Network infrastructure,1
+福岡県,2025,国家公安委員会（警察庁）福岡県警察,3,2,1,1,0,0,1,0,0,0,0,1,0,0,9,33.33333333333333,1,Fukuoka,System development | Operations and maintenance | Data and digital,1
+福岡県,2025,福岡県,2,2,0,2,0,0,1,0,0,0,0,0,0,0,9,22.22222222222222,2,Fukuoka,System development,2
+福岡県,2025,国土交通省九州地方整備局,1,1,0,0,0,0,1,0,0,0,0,0,0,0,9,11.11111111111111,3,Fukuoka,Operations and maintenance,1
+福岡県,2025,独立行政法人国立病院機構九州医療センター,1,1,0,0,0,0,1,0,0,0,0,0,0,0,9,11.11111111111111,3,Fukuoka,Operations and maintenance,1
+福岡県,2025,独立行政法人国立病院機構大牟田病院,1,1,0,0,0,0,1,0,0,0,0,0,0,0,9,11.11111111111111,3,Fukuoka,Operations and maintenance,1
+福岡県,2025,防衛省,1,1,0,0,0,0,1,0,0,1,0,0,0,0,9,11.11111111111111,3,Fukuoka,Operations and maintenance | Network infrastructure,1

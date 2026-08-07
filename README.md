@@ -190,7 +190,7 @@ The population file contains 2022–2025 values. The 2022–2024 values are Stat
 
 ## IT services taxonomy
 
-`reference_data/it_service_taxonomy_v1.json` is version `1.0.0` of the researcher-defined title taxonomy for IT-related notices within KKJ category `3` (`役務` / services). It is not an official KKJ classification.
+`reference_data/it_service_taxonomy_v1_1.json` is frozen version `1.1.0` of the researcher-defined title taxonomy for IT-related notices within KKJ category `3` (`役務` / services). It is not an official KKJ classification and must be described as a reproducible title-based IT-services indicator, not a comprehensive census of IT procurement. Frozen v1 and all rejected candidate files remain available for reproducibility.
 
 Load it in a notebook:
 
@@ -199,7 +199,7 @@ import json
 from pathlib import Path
 
 taxonomy = json.loads(
-    Path("reference_data/it_service_taxonomy_v1.json").read_text()
+    Path("reference_data/it_service_taxonomy_v1_1.json").read_text()
 )
 
 it_patterns = taxonomy["patterns"]
@@ -221,30 +221,30 @@ Default inputs:
 
 ```text
 service_history.sqlite
-reference_data/it_service_taxonomy_v1.json
+reference_data/it_service_taxonomy_v1_1.json
 ```
 
 Outputs:
 
 ```text
-analysis_outputs/service_notices_classified_v1.csv
-analysis_outputs/it_service_notices_v1.csv
-analysis_outputs/it_service_classification_v1_metadata.json
+analysis_outputs/service_notices_classified_v1_1.csv
+analysis_outputs/it_service_notices_v1_1.csv
+analysis_outputs/it_service_classification_v1_1_metadata.json
 ```
 
 The first CSV contains every historical service notice and the second contains only `it_related=True` notices. Both include detailed subgroup booleans, `matched_subgroups`, `subgroup_count`, `core_it_delivery`, `digital_or_ai_adjacent`, and `taxonomy_version`. Large `raw_xml` and `project_description` fields remain in SQLite rather than being duplicated in the CSVs. The metadata file records the taxonomy SHA-256 hash, source paths, row counts, and subgroup counts.
 
-The version 1 run classified 15,230 services and identified 712 IT-related notices: 628 core IT-delivery notices and 84 exclusively digital/AI-adjacent notices. These counts remain provisional until historical taxonomy-drift validation is complete.
+The frozen v1.1 run classified 15,230 services and identified 762 title-based IT-indicator notices: 691 core IT-delivery notices and 71 exclusively digital/AI-adjacent notices. Final independent title review found 138 correct IT, 7 clear false positives, and 5 uncertain cases among 150 sampled matches; among 200 sampled nonmatches it found 186 non-IT, 12 clear false negatives, and 2 uncertain cases. No regex tuning followed this final holdout.
 
 Override any paths when needed:
 
 ```bash
 uv run python -m one_off_scripts.classify_it_service_notices \
   --database service_history.sqlite \
-  --taxonomy reference_data/it_service_taxonomy_v1.json \
-  --output analysis_outputs/service_notices_classified_v1.csv \
-  --it-output analysis_outputs/it_service_notices_v1.csv \
-  --metadata-output analysis_outputs/it_service_classification_v1_metadata.json
+  --taxonomy reference_data/it_service_taxonomy_v1_1.json \
+  --output analysis_outputs/service_notices_classified_v1_1.csv \
+  --it-output analysis_outputs/it_service_notices_v1_1.csv \
+  --metadata-output analysis_outputs/it_service_classification_v1_1_metadata.json
 ```
 
 ### Validation sample and review process
@@ -366,11 +366,44 @@ FROM collection_periods
 GROUP BY status;
 ```
 
+## IT-services report analysis
+
+The working analysis notebook is:
+
+```text
+itinsights.ipynb
+```
+
+It reads the frozen full classification dataset:
+
+```text
+analysis_outputs/service_notices_classified_v1_1.csv
+```
+
+The report analysis currently covers:
+
+1. annual service and IT-indicator notice counts, IT share, and core-versus-adjacent composition;
+2. multi-label subgroup counts, shares, year-over-year change, absolute change, and CAGR;
+3. prefecture-level counts, shares, and annual changes across the six selected prefectures;
+4. leading publishing organizations by prefecture and year and their prominent subgroup tags; and
+5. organizations with the largest annual notice-count increases and the subgroup tags associated with those increases.
+
+Generated organization tables include:
+
+```text
+analysis_outputs/report_tables/top_organizations_by_prefecture_year.csv
+analysis_outputs/report_tables/organization_annual_growth.csv
+```
+
+Before publication, restart the Jupyter kernel and run the notebook from top to bottom. Remove superseded merge/debug cells and convert question headings and interpretation into Markdown cells. Preserve original Japanese organization names in tables and use a Japanese-capable font for figures. Counts are notices—not spending, contracts, awards, vendors, or necessarily unique projects. Detailed subgroup tags overlap and must not be stacked or summed as mutually exclusive categories.
+
+The KKJ `procedure_type` field is populated for only 141 of 762 IT-indicator notices, and all 141 populated values are `一般競争入札`. Procedure trends or public-versus-private comparisons are therefore outside the defensible scope of the first report.
+
 ## IT services case study: project checklist
 
 Research question:
 
-> How has public-sector IT-service procurement changed across six Japanese prefectures, which technology fields are growing, and which organizations drive that demand?
+> How did the volume, composition, and distribution of government service notices containing explicit IT-related terminology change between 2022 and 2025 across six selected Japanese prefectures?
 
 ### Completed
 
@@ -403,24 +436,27 @@ Research question:
 - [x] Generate one final untouched lean-candidate holdout after excluding 1,269 previously reviewed/development keys.
 - [x] Adjudicate the final lean holdout without further regex tuning: 138 correct IT, 7 false positives, and 5 uncertain among 150 matched notices; 186 non-IT, 12 false negatives, and 2 uncertain among 200 unmatched notices. Six otherwise correct IT notices had tag concerns.
 - [x] Freeze lean taxonomy v1.1 strictly as a reproducible title-based IT-services indicator—not a comprehensive census—and generate final classified report datasets and metadata.
-- [ ] If clear new terminology is found, create a new taxonomy version rather than silently changing version 1.
-- [ ] Freeze the validated historical classification before interpreting trends.
+- [ ] If clear new terminology is found, create a new taxonomy version rather than silently changing frozen v1.1.
 
 ### Core analysis
 
-- [ ] Calculate annual IT notice counts, IT share of all services, and year-over-year changes.
-- [ ] Analyze subgroup counts, shares, overlaps, and growth by year.
-- [ ] Compare prefectures using counts, IT share of services, and notices per 100,000 residents.
-- [ ] Identify top issuing organizations overall and by subgroup, plus organizations contributing most to annual increases or decreases.
+- [x] Calculate annual IT-indicator notice counts, IT share of all services, absolute changes, year-over-year changes, and core-versus-adjacent composition.
+- [x] Analyze detailed subgroup counts, overlapping shares, annual changes, 2022–2025 absolute change, and CAGR.
+- [x] Compare the six selected prefectures using service counts, IT-indicator counts, IT shares, annual changes, and 2022–2025 change.
+- [x] Identify leading publishing organizations by prefecture and year, their share of prefectural IT-indicator notices, and their leading detailed subgroups.
+- [x] Identify organizations with the largest annual notice-count increases and the multi-label subgroups most prominently associated with those increases.
+- [ ] Manually inspect the largest organization-level changes for reissues, recurring titles, organization-name changes, and source-publication effects before making headline claims.
 - [ ] Investigate normalized-title repetition by organization and year; do not present notice counts as unique projects without qualification.
-- [ ] Keep incomplete 2026 year-to-date results separate from completed 2022–2025 calendar years.
+- [x] Keep incomplete 2026 year-to-date results separate from completed 2022–2025 calendar years.
 
 ### Case report and later validation
 
-- [ ] Write the case-study methodology, completeness audit, taxonomy validation, results, and limitations.
+- [ ] Clean and restart-run `itinsights.ipynb`, remove superseded/error/debug cells, add Markdown interpretation, and save final publication tables and figures.
+- [ ] Write the static case-study report covering methodology, completeness audit, taxonomy validation, results, and limitations.
 - [ ] Run a 50–100 notice contract-detail pilot using official pages and attachments.
 - [ ] Keep estimated prices, ceilings, bids, winning prices, and final contract amounts separate; record tax status and source evidence.
 - [ ] Assess link validity, attachment availability, technical scope, eligibility requirements, deadlines, and contract periods.
+- [ ] Publish the static report with Quarto and GitHub Pages before building a dashboard.
 - [ ] Validate the report's usefulness with software consultancies, government contractors, cloud/security vendors, and procurement researchers before considering a dashboard.
 
 Current limitations:

@@ -14,10 +14,12 @@ from typing import Any
 import pandas as pd
 
 DEFAULT_DATABASE = Path("service_history.sqlite")
-DEFAULT_TAXONOMY = Path("reference_data/it_service_taxonomy_v1.json")
-DEFAULT_OUTPUT = Path("analysis_outputs/service_notices_classified_v1.csv")
-DEFAULT_IT_OUTPUT = Path("analysis_outputs/it_service_notices_v1.csv")
-DEFAULT_METADATA_OUTPUT = Path("analysis_outputs/it_service_classification_v1_metadata.json")
+DEFAULT_TAXONOMY = Path("reference_data/it_service_taxonomy_v1_1.json")
+DEFAULT_OUTPUT = Path("analysis_outputs/service_notices_classified_v1_1.csv")
+DEFAULT_IT_OUTPUT = Path("analysis_outputs/it_service_notices_v1_1.csv")
+DEFAULT_METADATA_OUTPUT = Path(
+    "analysis_outputs/it_service_classification_v1_1_metadata.json"
+)
 
 
 def main() -> None:
